@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/NewCatser.iml" filepath="$PROJECT_DIR$/NewCatser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nc-basic-biz/nc-basic-biz.iml" filepath="$PROJECT_DIR$/nc-basic-biz/nc-basic-biz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nc-basic-ui/nc-basic-ui.iml" filepath="$PROJECT_DIR$/nc-basic-ui/nc-basic-ui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nc-cat-biz/nc-cat-biz.iml" filepath="$PROJECT_DIR$/nc-cat-biz/nc-cat-biz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nc-cat-ui/nc-cat-ui.iml" filepath="$PROJECT_DIR$/nc-cat-ui/nc-cat-ui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nc-common-resource/nc-common-resource.iml" filepath="$PROJECT_DIR$/nc-common-resource/nc-common-resource.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nc-super-abs/nc-super-abs.iml" filepath="$PROJECT_DIR$/nc-super-abs/nc-super-abs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uc-common-bean/uc-common-bean.iml" filepath="$PROJECT_DIR$/uc-common-bean/uc-common-bean.iml" />
+    </modules>
+  </component>
+</project>

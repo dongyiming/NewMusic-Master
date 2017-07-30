@@ -1,0 +1,190 @@
+<!--@auther dongyiming-->
+<!-- 根节点<configuration>包含的属性 -->
+    <!-- scan 当此属性设置为true时，配置文件如果发生改变，将会被重新加载，默认值为true -->
+    <!-- scanPeriod: 设置监测配置文件是否有修改的时间间隔，如果没有给出时间单位，默认单位是毫秒。当scan为true时，此属性生效。默认的时间间隔为1分钟-->
+    <!-- debug : 当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false -->
+
+    <!-- 子节点：appender root logger-->
+        <!-- looger 用来设置某一个包或者具体的某一个类的日志打印级别、以及指定<appender>-->
+            <!-- name:用来指定受此loger约束的某一个包或者具体的某一个类-->
+            <!-- level:用来设置打印级别,大小写无关,如果未设置此属性，那么当前loger将会继承上级的级别-->
+                <!-- 一般通过name来确定上下级，eg: name:"logback" name:"logback.logger" logback的上级就是root-->
+            <!-- addtivity:是否向上级loger传递打印信息。默认是true-->
+                <!-- 设置为true时,若没设置level和appender,则将debug和大于debug级别的日志传递给root,root通过自己设置的appender来打印信息-->
+                <!-- 设置为false时,日志信息不会向上级传递,只执行当前appender(如果有)的信息,即上级的looger都不会执行,root也不会执行-->
+            <!-- <loger>可以包含零个或多个<appender-ref>元素，标识这个appender将会添加到这个loger-->
+                <!--设置了appender才能打印信息,否则不打印-->
+<configuration>
+
+    <!--声明一个属性,用来指定log文件存放的路径 通过<property>定义的值会被插入到logger上下文中-->
+    <property name="LOG_DIR" value="/sdcard/NewCaster/nc/dongyiming/logs" />
+    <property name="MAX_HISTORY" value="5" />
+
+    <!--用于在控制台输出的Appender-->
+    <appender name="logcat" class="ch.qos.logback.classic.android.LogcatAppender">
+        <encoder>
+            <pattern>%msg</pattern>
+        </encoder>
+    </appender>
+
+    <!-- RollingFileAppender: 滚动记录文件，先将日志记录到指定文件，当符合某个条件时，将日志记录到其他文件。有以下子节点 -->
+        <!-- <file>：被写入的文件名，可以是相对目录，也可以是绝对目录，如果上级目录不存在会自动创建，没有默认值-->
+        <!-- <append>：如果是 true，日志被追加到文件结尾，如果是 false，清空现存文件，默认是true-->
+        <!-- <encoder>：对记录事件进行格式化 负责两件事，一是把日志信息转换成字节数组，二是把字节数组写入到输出流-->
+            <!--目前PatternLayoutEncoder 是唯一有用的且默认的encoder -->
+            <!--有一个<pattern>节点，用来设置日志的输入格式。使用“%”加“转换符”方式，如果要输出“%”，则必须用“\”对“\%”进行转义-->
+        <!-- <rollingPolicy>: 当发生滚动时，决定 RollingFileAppender 的行为，涉及文件移动和重命名-->
+        <!-- <triggeringPolicy >: 告知 RollingFileAppender 合适激活滚动-->
+        <!-- <prudent>：当为true时，不支持FixedWindowRollingPolicy。支持TimeBasedRollingPolicy，但是有两个限制，1不支持也不允许文件压缩，2不能设置file属性，必须留空-->
+    <appender name="AllLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIR}/all.log</file>
+
+        <!--TimeBasedRollingPolicy： 最常用的滚动策略，它根据时间来制定滚动策略，既负责滚动也负责出发滚动。有以下子节点：-->
+            <!-- <fileNamePattern>: 必要节点，包含文件名及“%d”转换符， “%d”可以包含一个SimpleDateFormat指定的时间格式，如：%d{yyyy-MM}-->
+                <!-- logFile.%d{yyyy-MM-dd}.log 每天生成一个日志文件-->
+            <!-- <maxHistory>: 可选节点，控制保留的归档文件的最大数量，超出数量就删除旧文件。假设设置每个月滚动，且<maxHistory>是6，则只保存最近6个月的文件-->
+                <!-- <maxHistory>30</maxHistory>  保存30天的日志文件-->
+        <!--triggeringPolicy-->
+            <!--SizeBasedTriggeringPolicy 查看当前活动文件的大小，如果超过指定大小会告知RollingFileAppender 触发当前活动文件滚动。只有一个节点:-->
+                <!-- <maxFileSize>:这是活动文件的大小，默认值是10MB-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_DIR}/all-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>${MAX_HISTORY}</maxHistory>
+        </rollingPolicy>
+
+        <!-- 输出日志的logger名，可有一个整形参数，功能是缩短logger名，设置为0表示只输入logger最右边点符号之后的字符串-->
+            <!-- %logger       mainPackage.sub.sample.Bar-> mainPackage.sub.sample.Bar-->
+            <!-- %logger{0}    mainPackage.sub.sample.Bar-> Bar-->
+            <!-- %logger{5}    mainPackage.sub.sample.Bar-> m.s.s.Bar-->
+            <!-- %logger{10}   mainPackage.sub.sample.Bar-> m.s.s.Bar-->
+            <!-- %logger{15}   mainPackage.sub.sample.Bar-> m.s.sample.Bar-->
+            <!-- %logger{16}   mainPackage.sub.sample.Bar-> m.sub.sample.Bar-->
+            <!-- %logger{26}   mainPackage.sub.sample.Bar-> mainPackage.sub.sample.Bar-->
+
+        <!-- 输出日志的打印日志，模式语法与java.text.SimpleDateFormat 兼容-->
+            <!-- %d 2006-10-20 14:06:49,812-->
+            <!-- %date 2006-10-20 14:06:49,812-->
+            <!-- %date{HH:mm:ss.SSS} 14:06:49.812-->
+            <!-- %date{dd MMM yyyy ;HH:mm:ss.SSS} 20 oct. 2006;14:06:49.812-->
+        <!-- t/thread 输出产生日志的线程名 -->
+        <!-- p/le/level 输出日志级别 -->
+        <!-- m/msg/message 输出应用程序提供的信息 -->
+        <!-- n 输出平台先关的分行符“\n”或者“\r\n” -->
+        <!-- r/relative 输出从程序启动到创建日志记录的时间，单位是毫秒 -->
+        <!-- L/line 输出执行日志请求的行号。尽量避免使用，除非执行速度不造成任何问题 -->
+        <!-- replace(p){r,t} p 为日志内容，r 是正则表达式，将p中符合r的内容替换为t 例如， "%replace(%msg){'\s', ''}"-->
+
+        <!-- 格式修饰符与转换符共同使用：-->
+            <!--可选的格式修饰符位于“%”和转换符之间-->
+                <!--第一个可选修饰符是左对齐 标志，符号是减号“-”-->
+                <!--最小宽度 修饰符，用十进制数表示 如果字符小于最小宽度，则左填充或右填充，默认是左填充（即右对齐），填充符为空格。如果字符大于最小宽度，字符永远不会被截断-->
+                <!--最大宽度 修饰符，符号是点号"."后面加十进制数。如果字符大于最大宽度，则从前面截断。点符号“.”后面加减号“-”在加数字，表示从尾部截断-->
+            <!-- 例如：%-4relative 表示，将输出从程序启动到创建日志记录的时间 进行左对齐 且最小宽度为4-->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="TraceLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- <filter>: 过滤器，执行一个过滤器会返回枚举值，即DENY，NEUTRAL，ACCEPT其中之一-->
+            <!-- 过滤器被添加到<Appender> 中，为<Appender> 添加一个或多个过滤器后，可以用任意条件对日志进行过滤,多个过滤器时，按照配置顺序执行-->
+                <!-- 返回DENY，日志将立即被抛弃不再经过其他过滤器-->
+                <!-- 返回NEUTRAL，有序列表里的下个过滤器过接着处理日志-->
+                <!-- 返回ACCEPT，日志会被立即处理，不再经过剩余过滤器-->
+
+            <!-- LevelFilter 级别过滤器，根据日志级别进行过滤。如果日志级别等于配置级别，过滤器会根据onMath和onMismatch接收或拒绝日志-->
+                <!-- <level>:设置过滤级别-->
+                <!-- <onMatch>:用于配置符合过滤条件的操作-->
+                <!-- <onMismatch>:用于配置不符合过滤条件的操作-->
+            <!-- ThresholdFilter：临界值过滤器，过滤掉低于指定临界值的日志。当日志级别等于或高于临界值时，过滤器返回NEUTRAL；当日志级别低于临界值时，日志会被拒绝-->
+                <!-- <level>:设置过滤级别 eg:info 则过滤掉TRACE和DEBUG级别的日志-->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>TRACE</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+
+        <file>${LOG_DIR}/trace.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_DIR}/trace-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>${MAX_HISTORY}</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Create a file appender for DEBUG-level messages -->
+    <appender name="DebugLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+
+        <file>${LOG_DIR}/debug.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_DIR}/debug-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>${MAX_HISTORY}</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Create a file appender for info-level messages -->
+    <appender name="InfoLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+
+        <file>${LOG_DIR}/info.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_DIR}/info-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>${MAX_HISTORY}</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Create a file appender for Error-level messages -->
+    <appender name="ErrorLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+
+        <file>${LOG_DIR}/error.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_DIR}/error-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>${MAX_HISTORY}</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--<root> 根loger。只有一个level属性，应为已经被命名为"root"-->
+        <!-- 用来设置打印级别，大小写无关：TRACE, DEBUG, INFO, WARN, ERROR, ALL 和 OFF，不能设置为INHERITED或者同义词NULL-->
+        <!-- 默认是DEBUG 可以包含零个或多个<appender-ref>元素，标识这个appender将会添加到这个loger-->
+    <root level="DEBUG">
+        <appender-ref ref="logcat" />
+        <appender-ref ref="AllLog" />
+        <!--<appender-ref ref="DebugLog" />-->
+        <!--<appender-ref ref="TraceLog" />-->
+        <appender-ref ref="InfoLog" />
+        <appender-ref ref="ErrorLog" />
+    </root>
+</configuration>

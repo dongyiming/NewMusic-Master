@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background_tab_pressed">#c8c9c9</color>
+    <color name="groupbutton">#a3a3a3</color>
+
+    <!-- 首页底部  -->
+    <color name="color_btn_homepage_normal">#717474</color>
+    <color name="color_btn_homepage_pressed">#DFE7E7</color>
+
+</resources>

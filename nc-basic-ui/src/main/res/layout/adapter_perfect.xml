@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimens_perfect_item_height"
+    android:background="@color/color_padding_chatlist">
+
+    <RelativeLayout
+        android:layout_width="@dimen/dimens_perfect_item_content_width"
+        android:layout_height="@dimen/dimens_perfect_item_content_height"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/dimens_perfect_item_content_maginleft">
+
+        <RelativeLayout
+            android:id="@+id/rlayout_title"
+            android:layout_width="@dimen/dimens_perfect_item_title_width"
+            android:layout_height="@dimen/dimens_perfect_item_title_height"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/dimens_perfect_item_title_magintop"
+            android:background="@drawable/shape_perfect_item_title">
+
+            <TextView
+                style="@style/styles_wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/item_perfectmusic_title_str"
+                android:textColor="@color/color_bg_top_red"
+                android:textSize="@dimen/common_sz_10" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/txt_desc"
+            style="@style/styles_wrap_content"
+            android:layout_alignTop="@id/rlayout_title"
+            android:layout_marginLeft="@dimen/dimens_perfect_item_title_maginright"
+            android:layout_toRightOf="@id/rlayout_title"
+            android:text="儿童和摇滚，燃爆又抒情！那些只能给大朋友的哥"
+            android:textColor="@color/color_chatlist_item_desc"
+            android:textSize="@dimen/common_sz_14" />
+
+        <TextView
+            android:id="@+id/txt_capacity"
+            style="@style/styles_wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:text="阅读 8072"
+            android:textColor="@color/color_gray_text"
+            android:textSize="@dimen/common_sz_11" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/img_perfect"
+        android:layout_width="@dimen/dimens_perfect_item_image_width"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true" />
+
+</RelativeLayout>

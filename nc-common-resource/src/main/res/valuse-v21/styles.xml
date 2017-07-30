@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 更改主题必须隐藏原来的ActionBar -->
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <!--下面两个属性是5.0之后出现的，可以在Values21专属包下创建styles或者直接用colorPrimary两属性，不用加上android:前缀-->
+        <item name="colorPrimary">@color/color_bg_top_red</item>
+        <item name="colorPrimaryDark">@color/color_bg_top_red</item>
+        <item name="android:windowBackground">@color/color_padding_chatlist</item>
+        <item name="android:textColorPrimary">@color/color_bg_white</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+</resources>

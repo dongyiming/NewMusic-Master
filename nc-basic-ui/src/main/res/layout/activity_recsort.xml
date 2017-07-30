@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_padding_chatlist"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_top_height_dimens"
+        android:background="@color/color_bg_top_red"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/rlayout_back"
+            android:layout_width="@dimen/activity_top_height_dimens"
+            android:layout_height="@dimen/activity_top_height_dimens">
+
+            <ImageView
+                style="@style/styles_wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/img_toolbar_back" />
+        </RelativeLayout>
+
+        <TextView
+            style="@style/styles_wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/recommend_itemcontroller_toolbar_title_str"
+            android:textColor="@color/color_bg_top_white"
+            android:textSize="@dimen/common_sz_15" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_recommend_notice_height"
+        android:orientation="horizontal">
+
+        <ImageView
+            style="@style/styles_wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/dimens_recommend_notice_maginleft"
+            android:src="@drawable/img_sort_notice" />
+
+        <TextView
+            style="@style/styles_wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/dimens_recommend_notice_txt_maginleft"
+            android:text="@string/recommend_itemcontroller_notice_str"
+            android:textColor="@color/color_gray_text"
+            android:textSize="@dimen/common_sz_10" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_lh_0"
+        android:layout_marginLeft="@dimen/dimens_recommend_sort_item_maginleft"
+        android:background="@color/color_splitlint_bg" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_sort"
+        style="@style/style_recommend_sort"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

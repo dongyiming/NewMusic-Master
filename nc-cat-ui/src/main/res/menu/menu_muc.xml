@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--
+    showAsAction有这几大属性(app命名空间与android命名空间显示有些不同
+
+    ifRoom:会显示在Item中，但是如果已经有4个或者4个以上的Item时会隐藏在溢出列表中。当然个数并不仅仅局限于4个，依据屏幕的宽窄而定
+    never:永远不会显示。只会在溢出列表中显示，而且只显示标题，所以在定义item的时候，最好把标题都带上。
+    always:无论是否溢出，总会显示。
+    withText:示意Action bar要显示文本标题。Action bar会尽可能的显示这个标题，但是，如果图标有效并且受到Action bar空间的限制，文本标题有可能显示不全。
+    collapseActionView:声明了这个操作视窗应该被折叠到一个按钮中，当用户选择这个按钮时，这个操作视窗展开。否则，这个操作视窗在默认的情况下是可见的，并且即便在用于不适用的时候，也要占据操作栏的有效空间。
+    -->
+
+    <!-- 同级的item有几个则在toolbar右边显示几个 -->
+    <!--
+        id:之后设置点击事件的时候找到当前菜单项的唯一标识
+        title:必填项，Toolbar栏的menu标题
+        [如果存在icon，则显示icon图标，不显示文字]
+        [如果不存在icon,则显示文字]
+        app:showAsAction = "ifRoom" ：显示为一个行为
+        android:showAsAction="ifRoom":icon失效显示图标为“3个竖立的点”
+    -->
+    <item
+        android:id="@+id/item_search"
+        android:icon="@drawable/img_toolbar_search"
+        android:title="settings"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/toolbar_r_img"
+        android:icon="@drawable/img_menu_more"
+        android:title="分享"
+        app:showAsAction="ifRoom">
+        <!-- item包含menu表示该menu是item下的子菜单 -->
+        <menu>
+            <!-- 将group中的菜单项放于一个组里面 -->
+            <item
+                android:id="@+id/toolbar_r_1"
+                android:icon="@drawable/img_menu_item1"
+                android:title="@string/menu_item1_str"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/toolbar_r_2"
+                android:icon="@drawable/img_menu_item2"
+                android:title="@string/menu_item2_str"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/toolbar_r_3"
+                android:icon="@drawable/img_menu_item3"
+                android:title="@string/menu_item3_str"
+                app:showAsAction="ifRoom" />
+        </menu>
+    </item>
+</menu>

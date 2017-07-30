@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_menu"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:navigationIcon="@drawable/img_toolbar_back"
+        app:popupTheme="@style/OverflowMenuStyle"
+        app:subtitle="根据你的喜欢推荐"
+        app:subtitleTextAppearance="@style/ToolbarSubTitleSize"
+        app:title="歌单"
+        app:titleTextAppearance="@style/ToolbarTitleSize" />
+
+    <include layout="@layout/header_menu_content" />
+
+    <RelativeLayout
+        android:id="@+id/llayout_play"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_play_title_height">
+
+        <ImageView
+            android:id="@+id/img_play"
+            style="@style/styles_gravity_vertical"
+            android:layout_marginLeft="@dimen/dimens_play_maginleft"
+            android:src="@drawable/img_play" />
+
+        <TextView
+            android:id="@+id/txt_playall"
+            style="@style/styles_gravity_vertical"
+            android:layout_marginLeft="@dimen/dimens_play_txt_maginleft"
+            android:layout_toRightOf="@id/img_play"
+            android:text="@string/menu_playall_str"
+            android:textColor="@color/color_chatlist_item_desc"
+            android:textSize="@dimen/common_sz_15" />
+
+        <TextView
+            android:id="@+id/txt_menu_count"
+            style="@style/styles_gravity_vertical"
+            android:layout_toRightOf="@id/txt_playall"
+            android:textColor="@color/color_gray_text"
+            android:textSize="@dimen/common_sz_14" />
+
+        <Button
+            android:id="@+id/imgBtn_select"
+            android:layout_width="@dimen/dimens_play_select_width"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="#00000000"
+            android:drawableLeft="@drawable/img_play_select"
+            android:text="@string/menu_select_str" />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_menu"
+        style="@style/styles_match_parent" />
+</LinearLayout>

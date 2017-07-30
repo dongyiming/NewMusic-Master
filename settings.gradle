@@ -1,0 +1,1 @@
+include ':app', ':nc-basic-ui', ':nc-super-abs', ':nc-common-resource', ':nc-basic-biz', ':uc-common-bean', ':nc-cat-ui', ':nc-cat-biz'

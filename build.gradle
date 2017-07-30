@@ -1,0 +1,59 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+/**
+ *  安卓中有两种gradle文件，一个是跟目录下的，一个是各个moudle下的
+ *
+ *  1，根目录的build.gradle
+ *  新建一个Android Studio项目，根目录会自动生成一个build.gradle文件，主要是配置一些插件和默认的依赖类库的仓库。
+ *  2，module中的根目录的build.gradle
+ *  Android Studio这个IDE不同于eclipse，eclipse启动打开的是工作空间，一个工作空间下可以包括零个多个工程项目。
+ *  而Android Studio则是单个工程项目启动，一个工程项目中包括一个或多个module，
+ *  其中有一个build.gradle文件中头部为apply plugin: ‘com.android.application’标识的为应用程序module，
+ *  其余以apply plugin: ‘com.android.library’标识为Android Library。
+ *  在编译的时候，所有module的build.gradle依赖的类库都会合并为一个。
+ *
+ * 1.全局变量的使用
+ *   不知道你有没有注意到，在多个module的情况下，不同module的build.gradle文件中有部分配置项类似，或者依赖的类库，有部分是相同的，
+ *   在维护上不是很方便，这个时候就可以考虑统一配置。在项目根目录的build.gradle文件中添加以下代码和android{}同级
+ *   一般创建config.gradle里面编辑ext即可 在buildscript里和最顶部都加入apply from:"config.gradle"
+ *    ext {*      //全局变量控制，可在module中的build.gradle文件通过rootProject.ext.xxx开头来使用
+ *      compileSdkVersion = 24
+ *      buildToolsVersion = '24.0.3'
+ *      supportVersion = '24.2.1'
+ *      //主程序版本
+ *      targetSdkVersion = 24
+ *      minSdkVersion = 15
+ *      versionCode = 1
+ *      versionName = "v1.0.0"
+ *      //library版本
+ *      jjdxm_minSdkVersion = 9
+ *      jjdxm_versionCode = 1
+ *      jjdxm_versionName = "v1.0.0"
+ *      jjdxm_v4 = 'com.android.support:support-v4:'+supportVersion
+ *      jjdxm_v7 = 'com.android.support:appcompat-v7:'+supportVersion
+ *      jjdxm_design = 'com.android.support:design:'+supportVersion
+ *      jjdxm_cardview = 'com.android.support:cardview:'+supportVersion
+ *      jjdxm_recyclerview = 'com.android.support:recyclerview-v7:'+supportVersion
+ *}*/
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.2'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8' // 添加的部分
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+allprojects {
+    repositories {
+        jcenter()
+        maven { url "https://jitpack.io" }//刷新库
+    }
+}
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+dependencies {
+}

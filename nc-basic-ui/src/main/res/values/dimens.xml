@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- recommend page roll viewpager -->
+    <dimen name="viewpager_height">140dp</dimen>
+
+    <!--recommend page-->
+    <dimen name="fragment_daily_recimmend_dimens">101dp</dimen>
+
+
+
+</resources>

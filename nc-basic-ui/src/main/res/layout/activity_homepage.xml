@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:toolbar="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <com.example.nc_common_resource.view.CommonToolBar
+        android:id="@+id/commonbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_toolbar_height"
+        toolbar:rightIcon="@drawable/img_toolbar_homepage_default" />
+
+    <view
+        android:id="@+id/viewpager_homepage"
+        class="com.example.nc_basic_ui.view.MyViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <RadioGroup
+        android:id="@+id/rdogroup_homepage"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_bottom_height_dimens"
+        android:layout_gravity="bottom"
+        android:background="@color/color_bg_homepage_bottom"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rdobtn_unname1"
+            style="@style/styles_homepage_radiobuttom"
+            android:drawableTop="@drawable/selector_button_catfound"
+            android:text="@string/activity_bottom_button1_str" />
+
+        <RadioButton
+            android:id="@+id/rdobtn_unname2"
+            style="@style/styles_homepage_radiobuttom"
+            android:drawableTop="@drawable/selector_button_catown"
+            android:text="@string/activity_bottom_button2_str" />
+
+        <RadioButton
+            android:id="@+id/rdobtn_unname3"
+            style="@style/styles_homepage_radiobuttom"
+            android:drawableTop="@drawable/selector_button_minefriend"
+            android:text="@string/activity_bottom_button3_str" />
+
+        <RadioButton
+            android:id="@+id/rdobtn_unname4"
+            style="@style/styles_homepage_radiobuttom"
+            android:drawableTop="@drawable/selector_button_setting"
+            android:text="@string/activity_bottom_button4_str" />
+    </RadioGroup>
+</LinearLayout>

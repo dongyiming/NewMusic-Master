@@ -1,0 +1,37 @@
+apply plugin: 'com.android.application'//主程序的build.gradle文件，作为主程序的标识
+
+/**
+ * sdk版本设置规则:
+ * minSdkVersion <= targetSdkVersion <= compileSdkVersion
+ * minSdkVersion <= buildToolsVersion <= compileSdkVersion
+ */
+android {
+    compileSdkVersion 23//当前向前兼容sdk的版本
+    buildToolsVersion "23.0.3"//构建工具的版本
+    defaultConfig {
+        applicationId "com.example.pver.newcatser"//应用程序的id，在市场上使用的包名
+        minSdkVersion 11//最小sdk版本支持
+        targetSdkVersion 23//目标sdk版本
+        versionCode 1//应用程序版本号
+        versionName "1.0"//应用程序版本名称
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false//混淆是否开启
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    //依赖外部的类库
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:23.3.0'
+    testCompile 'junit:junit:4.12'
+    compile project(':nc-basic-ui')
+    compile project(':nc-cat-ui')
+}
