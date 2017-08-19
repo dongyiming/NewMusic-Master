@@ -5,16 +5,23 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <com.example.nc_common_resource.view.CommonToolBar
+        android:id="@+id/commonbar"
+        app:rightIcon="@drawable/img_hometop_left"
+        app:leftIcom="@drawable/img_homebar_right"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_toolbar_height" />
+
     <android.support.design.widget.TabLayout
         android:id="@+id/tablayout_top"
         android:layout_width="match_parent"
         android:layout_height="@dimen/common_lh_35"
+        app:tabTextAppearance="@style/TabLayoutTextStyle"
+        android:background="@color/color_bg_toolbar_white"
         app:tabIndicatorColor="@color/color_bg_top_red"
-        app:tabTextColor="@color/color_tablayout_textcolor"
-        app:tabSelectedTextColor="@color/color_bg_top_red"
-        android:background="@color/color_bg_top_white"
         app:tabIndicatorHeight="2dp"
-        />
+        app:tabSelectedTextColor="@color/color_bg_top_red"
+        app:tabTextColor="@color/color_tablayout_textcolor" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager_catfound"

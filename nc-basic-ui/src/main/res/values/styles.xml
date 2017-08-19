@@ -53,4 +53,14 @@
         <item name="android:scrollbarStyle">outsideOverlay</item>
         <item name="android:scrollbars">vertical</item>
     </style>
+
+    <!---->
+    <style name="style_mine" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:colorPrimaryDark">#00000000</item>
+        <item name="android:colorPrimary">#00000000</item>
+    </style>
+
+    <style name="TabLayoutTextStyle">
+        <item name="android:textSize">@dimen/common_sz_13</item>
+    </style>
 </resources>

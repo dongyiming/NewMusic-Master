@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <!--要想状态栏被侵染，根控件一定要设置fitsSystemWindows属性-->
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/ablayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
+        <!--contentScrim 折叠后toolbar和状态栏的背景色-->
+        <android.support.design.widget.CollapsingToolbarLayout
+            style="@style/style_mine"
+            android:layout_width="match_parent"
+            android:layout_height="273dp"
+            android:fitsSystemWindows="true"
+            app:contentScrim="@color/colorrrrrr"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            <!--fitsSystemWindows设置图片侵入状态栏-->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img04"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.7" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/circleimg_mine"
+                android:layout_width="@dimen/dimes_mine_headpic_radius"
+                android:layout_height="@dimen/dimes_mine_headpic_radius"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/img_mine_header"
+                android:layout_marginTop="@dimen/dimes_mine_headpic_margintop" />
+
+            <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimens_recommend_image_width"
+                android:layout_gravity="top"
+                app:layout_collapseMode="pin"
+                style="@style/style_mine"
+                app:title="董一鸣"
+                app:titleMarginTop="15dp" />
+
+
+            <!--<TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dimes_mine_name_margintop"
+                android:text="董一鸣"
+                android:textColor="@color/color_bg_white"
+                android:textSize="@dimen/common_sz_14" />-->
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab_mine"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimes_mine_tablayout_height"
+            android:layout_marginTop="@dimen/common_lh_2"
+            android:background="@color/color_bg_top_white"
+            app:tabIndicatorColor="@color/color_bg_top_red"
+            app:tabIndicatorHeight="2dp"
+            app:tabSelectedTextColor="@color/color_bg_top_red"
+            app:tabTextColor="@color/color_tablayout_textcolor" />
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager_mine"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_scrollFlags="scroll" />
+</android.support.design.widget.CoordinatorLayout>

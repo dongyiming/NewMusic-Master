@@ -60,7 +60,10 @@ public class RecyclerViewBuilder {
     public RecyclerViewBuilder setLinearLayoutManager() {
 
         //嵌套卡顿的问题
-        recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(mContext);
+        layoutManager.setSmoothScrollbarEnabled(true);
+        layoutManager.setAutoMeasureEnabled(true);
+        recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setNestedScrollingEnabled(false);
         return this;

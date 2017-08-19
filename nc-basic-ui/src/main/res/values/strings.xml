@@ -2,16 +2,16 @@
     <string name="app_name">NC-BASIC-UI</string>
 
     <!-- homepage 底部radiogroup-->
-    <string name="activity_bottom_button1_str">发现音乐</string>
-    <string name="activity_bottom_button2_str">我的音乐</string>
-    <string name="activity_bottom_button3_str">朋 友</string>
-    <string name="activity_bottom_button4_str">账 号</string>
+    <string name="activity_bottom_button1_str">首 页</string>
+    <string name="activity_bottom_button2_str">发 现</string>
+    <string name="activity_bottom_button3_str">关 注</string>
+    <string name="activity_bottom_button4_str">我 的</string>
 
     <!-- homepage 顶部tab-->
-    <string name="fragment_tab_recommend">个性推荐</string>
-    <string name="fragment_tab_chat">猫单</string>
-    <string name="fragment_tab_owner">主人主页</string>
-    <string name="fragment_tab_hottop">排行榜</string>
+    <string name="fragment_tab_recommend">音乐推荐</string>
+    <string name="fragment_tab_chat">音乐榜单</string>
+    <string name="fragment_tab_owner">热门视频</string>
+    <string name="fragment_tab_hottop">每日新闻</string>
 
     <!-- recommend page -->
     <string name="fragment_private_recommend_str">私人FM</string>
@@ -30,4 +30,9 @@
     <string name="recommend_itemcontroller_notice_str">想调整首页栏目的顺序？按住右边的按钮拖动即可</string>
     <string name="item_perfectmusic_title_str">专栏</string>
 
+    <!-- news-->
+    <string name="fragment_news_title">今日热闻</string>
+    <string name="video_str">VideoBeanForClient</string>
+    <string name="card_str">HorizontalScrollCard</string>
+    <string name="hot_str">近 期 热 门</string>
 </resources>

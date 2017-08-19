@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2f4f5"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <RelativeLayout
+            android:layout_marginTop="17.6dp"
+            android:layout_width="match_parent"
+            android:layout_height="17.6dp">
+            <ImageView
+                style="@style/styles_wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/img_header_left" />
+
+            <TextView
+                style="@style/styles_wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:text="个人信息"
+                android:textColor="@color/color_bg_top_black"
+                android:textSize="@dimen/common_sz_13" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginTop="11dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="9dp"
+            android:layout_height="17.6dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="地区: 上海市"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginTop="7dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="9dp"
+            android:layout_height="17.6dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="等级: LV7"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginTop="33dp"
+            android:layout_width="match_parent"
+            android:layout_height="17.6dp">
+            <ImageView
+                style="@style/styles_wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/img_header_left" />
+
+            <TextView
+                style="@style/styles_wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:text="个人介绍"
+                android:textColor="@color/color_bg_top_black"
+                android:textSize="@dimen/common_sz_13" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginTop="11dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="9dp"
+            android:layout_height="17.6dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="美人娟娟隔秋水，洞庭望八荒"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

@@ -15,7 +15,7 @@ import com.example.nc_common_resource.R;
 
 /**
  * @version : 1.0
- * @Description : 自定义加载更多：界面调试极其恶心，弄了一下午，textview不忘记设置hint
+ * @Description : 自定义加载更多
  * @autho : dongyiming
  * @data : 2017/7/25 23:48
  */
@@ -42,7 +42,7 @@ public class LoadMoreFooter extends RelativeLayout implements SwipeLoadMoreTrigg
 
     private void initView() {
 
-        mView = LayoutInflater.from(getContext()).inflate(R.layout.relativelayout_footer_layout, null);
+        mView = LayoutInflater.from(getContext()).inflate(R.layout.recyclerview_footer_layout, null);
         loadingView = (ImageView) mView.findViewById(R.id.image_loading);
         content = (TextView) mView.findViewById(R.id.txt_content);
         addView(mView, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));

@@ -25,12 +25,12 @@ public class CommonToolBar extends Toolbar {
     private ImageButton mLeftButton;
     private ImageButton mRightButton;
     private LinearLayout mSearch;
+    private Drawable leftIcon;
+    private Drawable rightIcon;
+    private String titleName;
+    private String subtitleName;
+    private TextView mTextSubTitle;
 
-    /**
-     * 这个构造是直接使用的，默认是super,一直忘记改指向，所以顶部toolbar一直没显示
-     *
-     * @param context
-     */
     public CommonToolBar(Context context) {
         this(context, null);
     }
@@ -46,11 +46,11 @@ public class CommonToolBar extends Toolbar {
         if (attrs != null) {
 
             TintTypedArray tintTypedArray = TintTypedArray.obtainStyledAttributes(context, attrs, R.styleable.CommonToolBar, defStyleAttr, 0);
-            Drawable leftIcon = tintTypedArray.getDrawable(R.styleable.CommonToolBar_leftIcom);
-            Drawable rightIcon = tintTypedArray.getDrawable(R.styleable.CommonToolBar_rightIcon);
-            String titleName = tintTypedArray.getString(R.styleable.CommonToolBar_titleName);
+            leftIcon = tintTypedArray.getDrawable(R.styleable.CommonToolBar_leftIcom);
+            rightIcon = tintTypedArray.getDrawable(R.styleable.CommonToolBar_rightIcon);
+            titleName = tintTypedArray.getString(R.styleable.CommonToolBar_titleName);
+            subtitleName = tintTypedArray.getString(R.styleable.CommonToolBar_subtitleName);
 
-            //根据布局的引用设置值
             if (leftIcon != null) {
                 setLeftButtonIcon(leftIcon);
             }
@@ -60,6 +60,10 @@ public class CommonToolBar extends Toolbar {
             if (titleName != null) {
                 setTitleName(titleName);
             }
+            if (subtitleName != null) {
+                setSubTitleName(subtitleName);
+            }
+
             tintTypedArray.recycle();
         }
     }
@@ -71,7 +75,27 @@ public class CommonToolBar extends Toolbar {
         mLeftButton = (ImageButton) mView.findViewById(R.id.imgBtn_left);
         mRightButton = (ImageButton) mView.findViewById(R.id.imgBtn_right);
         mSearch = (LinearLayout) mView.findViewById(R.id.llayout_search);
+        mTextSubTitle = (TextView) mView.findViewById(R.id.txt_subtitle);
         addView(mView, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+    }
+
+    /**
+     * 设置搜索框可见
+     */
+    public void setSearchVisible() {
+
+        if (mSearch != null && mSearch.getVisibility() == View.GONE) {
+            mSearch.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public ImageButton getmLeftIcon() {
+
+        if (mLeftButton != null) {
+
+            return mLeftButton;
+        }
+        return null;
     }
 
     public void setTitleName(String titleName) {
@@ -82,8 +106,20 @@ public class CommonToolBar extends Toolbar {
         }
     }
 
+    /**
+     * webview专用的方法
+     *
+     * @param subTitleName
+     */
+    public void setSubTitleName(String subTitleName) {
+        if (mTextSubTitle != null) {
+            mTextSubTitle.setVisibility(View.VISIBLE);
+            mTextSubTitle.setText(subTitleName);
+        }
+    }
+
     public void showSearchView() {
-        if (mTextTitle != null && mSearch != null){
+        if (mTextTitle != null && mSearch != null) {
             mTextTitle.setVisibility(View.GONE);
             mSearch.setVisibility(VISIBLE);
         }
@@ -110,7 +146,7 @@ public class CommonToolBar extends Toolbar {
      *
      * @param icon
      */
-    private void setLeftButtonIcon(Drawable icon) {
+    public void setLeftButtonIcon(Drawable icon) {
         if (mLeftButton != null) {
             mLeftButton.setImageDrawable(icon);
             mLeftButton.setVisibility(VISIBLE);

@@ -121,5 +121,41 @@
     <dimen name="dimens_toolbar_search_height">25dp</dimen>
     <dimen name="dimens_toolbar_search_txt_maginleft">5dp</dimen>
     <dimen name="dimens_toolbar_search_img_maginleft">37dp</dimen>
+    <dimen name="dimens_toolbar_text_maginleft">50dp</dimen>
 
+    <!--eye webview-->
+    <dimen name="dimens_webview_top_height">48dp</dimen>
+    <dimen name="dimes_items_image_height">208dp</dimen>
+    <dimen name="dimes_items_infos_height">70dp</dimen>
+    <dimen name="dimes_circleview_radis">40dp</dimen>
+    <dimen name="dimes_circleview_maginleft">16dp</dimen>
+    <dimen name="dimes_title_maginleft">12dp</dimen>
+    <dimen name="dimes_title_magintop">15dp</dimen>
+    <dimen name="dimes_desc_magintop">3dp</dimen>
+    <dimen name="dimes_diver_height">10dp</dimen>
+    <dimen name="dimes_title_height">50dp</dimen>
+
+    <!-- player-->
+    <dimen name="dimes_player_show_height">203dp</dimen>
+
+
+    <!-- daily -->
+    <dimen name="dimes_item_height">106dp</dimen>
+    <dimen name="dimes_cardview_maginleft">8dp</dimen>
+    <dimen name="dimes_cardview_magintop">5dp</dimen>
+    <dimen name="dimes_content_height">98dp</dimen>
+    <dimen name="dimes_content_title_margintop">11dp</dimen>
+    <dimen name="dimes_content_title_marginleft">16dp</dimen>
+    <dimen name="dimes_content_title_width">222dp</dimen>
+    <dimen name="dimes_news_rollpager_height">225dp</dimen>
+    <dimen name="dimes_news_title_height">48dp</dimen>
+    <dimen name="dimes_news_title_marginleft">16dp</dimen>
+    <dimen name="dimes_news_image_title_width">328dp</dimen>
+    <dimen name="dimes_news_image_title_marginbottom">26dp</dimen>
+
+    <!--mine-->
+    <dimen name="dimes_mine_tablayout_height">38dp</dimen>
+    <dimen name="dimes_mine_headpic_radius">82dp</dimen>
+    <dimen name="dimes_mine_headpic_margintop">42dp</dimen>
+    <dimen name="dimes_mine_name_margintop">128dp</dimen>
 </resources>

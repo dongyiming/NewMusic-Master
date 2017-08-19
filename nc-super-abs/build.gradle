@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        minSdkVersion 11
+        minSdkVersion 21
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -32,4 +32,5 @@ dependencies {
     compile project(':uc-common-bean')
     //rebolectric导致的问题目前没办法解决
     //compile 'org.robolectric:robolectric:3.4-rc3'
+    compile 'com.android.support:design:23.3.0'
 }

@@ -2,6 +2,7 @@ package com.example.nc_basic_biz.repository;
 
 import android.util.Log;
 
+import com.example.uc_common_bean.enums.MenuType;
 import com.example.uc_common_bean.greedao.MenuInfoDao;
 import com.example.uc_common_bean.vo.MenuInfo;
 
@@ -92,6 +93,13 @@ public class MenuRepository extends BaseRepository<MenuInfo> implements IMenuRep
 
         List<MenuInfo> menuInfos = menuInfoDao.queryBuilder().where(MenuInfoDao.Properties.MenuType.eq(menuType)).list();
         if (menuInfos != null && menuInfos.size() != 0) {
+            if (menuType == MenuType.UNP_MUC.getValue()) {
+                for (int i = 0; i < menuInfos.size(); i++) {
+                    if (i == menuInfos.size() - 1) {
+                        menuInfos.get(i).setMenuType(999);
+                    }
+                }
+            }
             return menuInfos;
         }
         return null;

@@ -6,6 +6,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,9 @@ import android.widget.RelativeLayout;
 
 import com.example.nc_super_abs.R;
 import com.example.nc_super_abs.interaction.IFragmentView;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.ref.WeakReference;
 
@@ -26,8 +30,10 @@ import java.lang.ref.WeakReference;
  */
 public abstract class BaseInnerFragment extends Fragment implements IFragmentView, View.OnClickListener {
 
+    protected Logger logger = LoggerFactory.getLogger(getClass());
     protected boolean isVisible;
     protected boolean isPrepared;
+    protected boolean isFirst;//第一次加载
     private ImageView loadingView;
     private AnimationDrawable animationDrawable;
     private LinearLayout loadingContent;
@@ -52,15 +58,15 @@ public abstract class BaseInnerFragment extends Fragment implements IFragmentVie
         loadingView = (ImageView) contentView.findViewById(R.id.img_progress);
         content.addView(bindView);
         bindView.setVisibility(View.GONE);
-        loading();
         return contentView;
     }
 
     //加载动画效果
     public void loading() {
-
-        if (animationDrawable != null && isVisible) {
-            animationDrawable = (AnimationDrawable) loadingView.getDrawable();
+        if (isVisible) {
+            if (animationDrawable == null) {
+                animationDrawable = (AnimationDrawable) loadingView.getDrawable();
+            }
             if (!animationDrawable.isRunning()) {
                 animationDrawable.start();
             }
@@ -102,7 +108,11 @@ public abstract class BaseInnerFragment extends Fragment implements IFragmentVie
         if (!isVisible || !isPrepared) {
             return;
         }
-        initData();
+        if (!isFirst) {//第一次加载，其他使用缓存数据
+            loading();
+            initData();
+            isFirst = true;
+        }
     }
 
     @Override

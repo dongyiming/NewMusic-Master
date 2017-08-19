@@ -4,6 +4,7 @@
         <attr name="leftIcom" format="reference" />
         <attr name="rightIcon" format="reference" />
         <attr name="titleName" format="string" />
+        <attr name="subtitleName" format="string" />
     </declare-styleable>
 
 </resources>

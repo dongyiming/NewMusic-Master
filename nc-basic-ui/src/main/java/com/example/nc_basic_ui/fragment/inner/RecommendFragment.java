@@ -1,21 +1,21 @@
 package com.example.nc_basic_ui.fragment.inner;
 
-import android.content.Intent;
 import android.os.Handler;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import com.example.nc_basic_ui.R;
-import com.example.nc_basic_ui.activity.RecommendSortActivity;
-import com.example.nc_basic_ui.adapter.MyRollViewPager;
-import com.example.nc_basic_ui.controller.ContentViewEngine;
+import com.example.nc_basic_ui.adapter.RecAdapter;
 import com.example.nc_basic_ui.controller.RecommendController;
-import com.example.nc_basic_ui.view.RecommendHintView;
+import com.example.nc_basic_ui.view.RecommendItemDrcoration;
 import com.example.nc_super_abs.fragment.BaseInnerFragment;
-import com.jude.rollviewpager.RollPagerView;
+import com.example.nc_super_abs.interaction.ICommonInvokeResult;
+import com.example.uc_common_bean.vo.MenuInfo;
+
+import java.util.List;
 
 /**
  * @version : 1.0
@@ -26,17 +26,8 @@ import com.jude.rollviewpager.RollPagerView;
 public class RecommendFragment extends BaseInnerFragment {
 
     /* widget */
-    private LinearLayout hotRecLayout;
-    private LinearLayout sortRecLayout;
-    private LinearLayout dailyRecLayout;
-    private LinearLayout privateFmLayout;
-    private RelativeLayout itemCtrLayout;
-    private RollPagerView rollpagerRecommend;
     private RecommendController recommendController;
-    private ContentViewEngine contentViewEngine;
-    private boolean isFirst;//第一次加载
 
-    private boolean isPrepared;
     private Handler handler = new Handler();
     private RecyclerView recycler_recomment;
 
@@ -44,19 +35,14 @@ public class RecommendFragment extends BaseInnerFragment {
     public View setRootView(LayoutInflater inflater) {
 
         View view = inflater.inflate(R.layout.fragment_recommend, null);
-        rollpagerRecommend = (RollPagerView) view.findViewById(R.id.rollpager_recommend);
         recycler_recomment = (RecyclerView) view.findViewById(R.id.recycler_recomment);
-        privateFmLayout = (LinearLayout) view.findViewById(R.id.rlayout_private_recommend);
-        dailyRecLayout = (LinearLayout) view.findViewById(R.id.rlayout_daily_recommend);
-        hotRecLayout = (LinearLayout) view.findViewById(R.id.rlayout_hotmusic_recommend);
-        itemCtrLayout = (RelativeLayout) view.findViewById(R.id.rlayout_itemcontroller);
+        recycler_recomment.setNestedScrollingEnabled(false);
         return view;
     }
 
     @Override
     public void registerWidgetEvent() {
         super.registerWidgetEvent();
-        itemCtrLayout.setOnClickListener(this);
     }
 
     @Override
@@ -67,11 +53,11 @@ public class RecommendFragment extends BaseInnerFragment {
     @Override
     public void initData() {
 
-
+        Log.e("dongyiming", "RecommendFragment initData");
         //联网请求服务器数据的方法，自己调试时使用，演示时从本地获取数据
         /*recommendController.getRecommend(new ICommonInvokeResult<List<MenuInfo>, String>() {
             @Override
-            public void OnResult(List<MenuInfo> var1) {
+            public void onResult(List<MenuInfo> var1) {
                 //第一次使用
             }
 
@@ -85,48 +71,33 @@ public class RecommendFragment extends BaseInnerFragment {
 
             }
         });*/
-        if (!isFirst) {
-
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    showContentView();
-                    isFirst = true;
-                    initView();
-                }
-            }, 1000);
-            return;
-        }
-        initView();
+       handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                showContentView();
+                initView();
+            }
+        }, 1000);
     }
 
     public void initView() {
 
-        //配置轮播图
-        rollpagerRecommend.setAdapter(new MyRollViewPager(getActivity(), rollpagerRecommend));
-        rollpagerRecommend.setHintView(new RecommendHintView(getActivity()
-                , getActivity().getResources().getColor(R.color.color_rollpager_hint_bg)
-                , getActivity().getResources().getColor(R.color.color_bg_top_white)
-                , 4, 5));
-
-        contentViewEngine = new ContentViewEngine(getActivity());
-        contentView.addView(contentViewEngine.buildRecMenu());
-        contentView.addView(contentViewEngine.buildUnp());
-        contentView.addView(contentViewEngine.buildLat());
-        contentView.addView(contentViewEngine.buildRecMv());
-        contentView.addView(contentViewEngine.buildPerf());
-        contentView.addView(contentViewEngine.buildRad());
+        recycler_recomment.setLayoutManager(new GridLayoutManager(getActivity(), 6));
+        recycler_recomment.addItemDecoration(new RecommendItemDrcoration(getActivity()));
+        List<MenuInfo> list = recommendController.getList();
+        RecAdapter recAdapter = new RecAdapter(getActivity(), list);
+        recycler_recomment.setAdapter(recAdapter);
     }
 
     @Override
     public void widgetClick(View v) {
 
-        int weightId = v.getId();
+        /*int weightId = v.getId();
         if (weightId == R.id.rlayout_itemcontroller) {//调整栏目顺序
             Intent intent = new Intent();
             intent.setClass(getActivity(), RecommendSortActivity.class);
             startActivity(intent);
-        }
+        }*/
     }
 
     @Override

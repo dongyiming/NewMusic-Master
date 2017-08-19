@@ -5,8 +5,7 @@ import android.util.Log;
 
 
 import com.example.nc_basic_biz.application.MyApplication;
-import com.example.nc_basic_biz.core.DaoHelperEngine;
-import com.example.nc_basic_biz.core.DaoSessionEngine;
+import com.example.nc_basic_biz.core.greendao.DaoHelperEngine;
 import com.example.uc_common_bean.greedao.DaoSession;
 
 import java.util.List;

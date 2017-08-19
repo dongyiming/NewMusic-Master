@@ -2,6 +2,7 @@ package com.example.nc_basic_ui.fragment.inner;
 
 import android.graphics.drawable.AnimationDrawable;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
@@ -13,6 +14,7 @@ import com.example.nc_basic_ui.adapter.MenuListAdapter;
 import com.example.nc_basic_ui.controller.MenuListController;
 import com.example.nc_common_resource.builder.RecyclerViewBuilder;
 import com.example.nc_common_resource.view.LoadMoreFooter;
+import com.example.nc_super_abs.fragment.BaseFragment;
 import com.example.nc_super_abs.fragment.BaseInnerFragment;
 import com.example.nc_super_abs.interaction.ICommonInvokeResult;
 import com.example.uc_common_bean.decoration.DecorationInfo;
@@ -78,7 +80,7 @@ public class MenuListFragment extends BaseInnerFragment {
 
     @Override
     public void initData() {
-
+        Log.e("dongyiming", "MenuListFragment initData");
         if (page == 0) {
             menuListController.selectByType(type, startIndex, pageCount, commonInvokeResult);
         }
@@ -94,7 +96,7 @@ public class MenuListFragment extends BaseInnerFragment {
 
     private ICommonInvokeResult<List<MenuInfo>, String> commonInvokeResult = new ICommonInvokeResult<List<MenuInfo>, String>() {
         @Override
-        public void OnResult(List<MenuInfo> menuInfos) {
+        public void onResult(List<MenuInfo> menuInfos) {
 
             if (menuInfos != null && menuInfos.size() != 0) {
 

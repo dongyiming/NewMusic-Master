@@ -59,7 +59,7 @@ public class MenuInfoManager {
 
             @Override
             public void onNext(List<MenuInfo> menuInfos) {
-                commonInvokeResult.OnResult(menuInfos);
+                commonInvokeResult.onResult(menuInfos);
             }
         });
 
@@ -90,7 +90,7 @@ public class MenuInfoManager {
 
                 //复杂的数据请求可以放在asynctask里操作
                 menuRepository.insertList(menuInfos);
-                commonInvokeResult.OnResult(menuInfos);
+                commonInvokeResult.onResult(menuInfos);
             }
         });
 
@@ -119,7 +119,7 @@ public class MenuInfoManager {
 
         try {
             List<MenuInfo> menuInfos = menuRepository.selectByType(type, startIndex, pageCount);
-            commonInvokeResult.OnResult(menuInfos);
+            commonInvokeResult.onResult(menuInfos);
         } catch (Exception e) {
             commonInvokeResult.onFailure(e.toString());
         }
@@ -140,12 +140,12 @@ public class MenuInfoManager {
             @Override
             public void onNext(@NonNull List<MenuInfo> menuInfos) {
 
-                for (MenuInfo menuInfo : menuInfos) {
-
-                    Log.e("dongyiming", "onNext: " + menuInfo.getMenuName());
-                }
+//                for (MenuInfo menuInfo : menuInfos) {
+//
+//                    Log.e("dongyiming", "onNext: " + menuInfo.getMenuName());
+//                }
                 menuRepository.insertList(menuInfos);
-                commonInvokeResult.OnResult(menuInfos);
+                commonInvokeResult.onResult(menuInfos);
             }
 
             @Override

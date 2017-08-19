@@ -38,7 +38,7 @@ public class RecommendControllerTest {
             /*recommendController = new RecommendController(BasicUiApplication.getContext());
             recommendController.getRecommend(new ICommonInvokeResult<List<MenuInfo>, String>() {
                 @Override
-                public void OnResult(List<MenuInfo> menuInfos) {
+                public void onResult(List<MenuInfo> menuInfos) {
 
                     for (MenuInfo menuInfo : menuInfos) {
                         Assert.assertNotNull("dongyiming", menuInfo.getMenuName());

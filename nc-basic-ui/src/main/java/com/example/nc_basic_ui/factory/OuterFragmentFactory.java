@@ -1,19 +1,19 @@
 package com.example.nc_basic_ui.factory;
 
-import com.example.nc_basic_ui.fragment.home.HomePageFoundFragment;
-import com.example.nc_basic_ui.fragment.home.HomePageFriendFragment;
-import com.example.nc_basic_ui.fragment.home.HomePageOwnerFragment;
-import com.example.nc_basic_ui.fragment.home.HomePageSettingFragment;
+import com.example.nc_basic_ui.fragment.home.HomeFragment;
+import com.example.nc_basic_ui.fragment.home.FoundFragment;
+import com.example.nc_basic_ui.fragment.home.LoveHomeFragment;
+import com.example.nc_basic_ui.fragment.home.MineHomeFragment;
 import com.example.nc_super_abs.fragment.BaseFragment;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- *  @Description :
- *  @autho : dongyiming
- *  @version : 1.0
- *  @data : 2017/7/29 20:58
+ * @version : 1.0
+ * @Description :
+ * @autho : dongyiming
+ * @data : 2017/7/29 20:58
  */
 public class OuterFragmentFactory {
 
@@ -38,16 +38,16 @@ public class OuterFragmentFactory {
             switch (page) {
 
                 case PAGE_ONE:
-                    mFragmentFactory = new HomePageFoundFragment();
+                    mFragmentFactory = new HomeFragment();
                     break;
                 case PAGE_TWO:
-                    mFragmentFactory = new HomePageOwnerFragment();
+                    mFragmentFactory = new FoundFragment();
                     break;
                 case PAGE_THREE:
-                    mFragmentFactory = new HomePageFriendFragment();
+                    mFragmentFactory = new LoveHomeFragment();
                     break;
                 case PAGE_FOUR:
-                    mFragmentFactory = new HomePageSettingFragment();
+                    mFragmentFactory = new MineHomeFragment();
                     break;
 
             }

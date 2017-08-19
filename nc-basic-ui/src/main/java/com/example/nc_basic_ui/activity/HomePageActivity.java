@@ -26,7 +26,7 @@ public class HomePageActivity extends BaseActivity {
     RadioButton rdobtnUnname4;
     RadioGroup rdogroupHomepage;
     MyViewPager viewpagerHomepage;
-    CommonToolBar commonbar;
+    //CommonToolBar commonbar;
 
     @Override
     public void setRootView() {
@@ -42,7 +42,7 @@ public class HomePageActivity extends BaseActivity {
         rdobtnUnname3 = (RadioButton) findViewById(R.id.rdobtn_unname3);
         rdobtnUnname4 = (RadioButton) findViewById(R.id.rdobtn_unname4);
         rdogroupHomepage = (RadioGroup) findViewById(R.id.rdogroup_homepage);
-        commonbar = (CommonToolBar) findViewById(R.id.commonbar);
+        //rdogroupHomepage.getBackground().setAlpha(255);
         viewpagerHomepage.setOffscreenPageLimit(3);
     }
 
@@ -57,16 +57,12 @@ public class HomePageActivity extends BaseActivity {
                 if (checkedId == R.id.rdobtn_unname1) {
 
                     viewpagerHomepage.setCurrentItem(0, false);
-                    commonbar.showSearchView();
                 } else if (checkedId == R.id.rdobtn_unname2) {
                     viewpagerHomepage.setCurrentItem(1, false);
-                    commonbar.setTitleName("我的音乐");
                 } else if (checkedId == R.id.rdobtn_unname3) {
                     viewpagerHomepage.setCurrentItem(2, false);
-                    commonbar.setTitleName("朋友");
                 } else if (checkedId == R.id.rdobtn_unname4) {
                     viewpagerHomepage.setCurrentItem(3, false);
-                    commonbar.setTitleName("账号");
                 }
                 switchColor(checkedId);
 

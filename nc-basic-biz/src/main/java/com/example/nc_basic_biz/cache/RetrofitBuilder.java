@@ -1,5 +1,8 @@
 package com.example.nc_basic_biz.cache;
 
+import com.example.nc_basic_biz.gson.MyGsonConverterFactory;
+import com.google.gson.Gson;
+
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -17,10 +20,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitBuilder {
 
     private static final int DEFAULT_TIMEOUT = 5;
-    //本地服务器路径，简单的SSM框架
-    public static final String BASE_URL = "http://192.168.1.102:8080/menu/";
-
-    private Retrofit retrofit;
+    private Retrofit menuRetrofit;
+    private Retrofit eyeRetrofit;
+    private Retrofit newsRetrofit;
     private static RetrofitBuilder instance;
     private final OkHttpClient.Builder httpclentBuilder;
 
@@ -42,15 +44,39 @@ public class RetrofitBuilder {
         return instance;
     }
 
-    public Retrofit getRetrofit() {
+    public Retrofit getMenuRetrofit(String BASE_URL) {
 
-        if (retrofit == null) {
-            retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
+        if (menuRetrofit == null) {
+            menuRetrofit = new Retrofit.Builder().baseUrl(BASE_URL)
                     .client(httpclentBuilder.build())
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();
         }
-        return retrofit;
+        return menuRetrofit;
+    }
+
+    public Retrofit getEyeRetrofit(String BASE_URL) {
+
+        if (eyeRetrofit == null) {
+            eyeRetrofit = new Retrofit.Builder().baseUrl(BASE_URL)
+                    .client(httpclentBuilder.build())
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .build();
+        }
+        return eyeRetrofit;
+    }
+
+    public Retrofit getNewsRetrofit(String BASE_URL) {
+
+        if (newsRetrofit == null) {
+            newsRetrofit = new Retrofit.Builder().baseUrl(BASE_URL)
+                    .client(httpclentBuilder.build())
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .build();
+        }
+        return newsRetrofit;
     }
 }

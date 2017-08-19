@@ -22,9 +22,10 @@ public class MenuInfoHttpInvoker implements IMenuInfoHttpInvoker {
 
     private final MenuService menuService;
 
+
     public MenuInfoHttpInvoker() {
 
-        Retrofit retrofit = RetrofitBuilder.getInstance().getRetrofit();
+        Retrofit retrofit = RetrofitBuilder.getInstance().getMenuRetrofit(BASE_URL);
         menuService = retrofit.create(MenuService.class);
     }
 

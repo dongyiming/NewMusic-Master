@@ -29,7 +29,6 @@ public class MenuInfoFun implements Function<List<NcMenu>, List<MenuInfo>> {
             MenuInfoConvert menuInfoConvert = new MenuInfoConvert();
             for (NcMenu ncMenu : ncMenus) {
                 MenuInfo menuInfo = menuInfoConvert.convert(ncMenu);
-                Log.e("dongyiming", "name = " + menuInfo.getMenuName() + "/n" + "url = " + menuInfo.getMenuPicurl());
                 menuInfos.add(menuInfo);
             }
         }

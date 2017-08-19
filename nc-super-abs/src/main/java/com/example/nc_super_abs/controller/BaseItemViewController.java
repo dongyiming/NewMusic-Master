@@ -2,7 +2,6 @@ package com.example.nc_super_abs.controller;
 
 import android.util.SparseArray;
 
-import com.example.nc_super_abs.adapter.WrapperBean;
 import com.example.nc_super_abs.adapter.viewholder.BaseViewHolder;
 import com.example.nc_super_abs.interaction.IMultiRecyclerViewListener;
 
@@ -15,7 +14,7 @@ import org.slf4j.LoggerFactory;
  * @autho : dongyiming
  * @data : 2017/6/6 15:34
  */
-public class BaseItemViewController<T extends WrapperBean> {
+public class BaseItemViewController<T> {
 
     protected Logger logger = LoggerFactory.getLogger(getClass());
     private SparseArray<IMultiRecyclerViewListener<T>> items = new SparseArray<>();

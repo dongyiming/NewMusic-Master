@@ -7,6 +7,9 @@
     <!--recommend page-->
     <dimen name="fragment_daily_recimmend_dimens">101dp</dimen>
 
+    <!--eyes dimens-->
+    <dimen name="rollpager_height_dimens">209dp</dimen>
+    <dimen name="rollpager_maginbottom_dimens">7dp</dimen>
 
 
 </resources>

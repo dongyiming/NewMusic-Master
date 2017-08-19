@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.jude.rollviewpager.RollPagerView
+        android:id="@+id/rollpager_recommend"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/viewpager_height"
+        app:rollviewpager_hint_color="@color/color_rollpager_hint_bg"
+        app:rollviewpager_play_delay="4000" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fragment_daily_recimmend_dimens"
+        android:background="@color/color_padding_chatlist"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/rlayout_private_recommend"
+            style="@style/styles_recommend_linearLayout">
+
+            <ImageView
+                style="@style/styles_recommend_imageview"
+                android:src="@drawable/selector_recommend_private" />
+
+            <TextView
+                style="@style/styles_recommend_textview"
+                android:text="@string/fragment_private_recommend_str" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rlayout_daily_recommend"
+            style="@style/styles_recommend_linearLayout">
+
+            <ImageView
+                style="@style/styles_recommend_imageview"
+                android:src="@drawable/selector_recommend_daily" />
+
+            <TextView
+                style="@style/styles_recommend_textview"
+                android:text="@string/fragment_daily_recommend_str" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rlayout_hotmusic_recommend"
+            style="@style/styles_recommend_linearLayout">
+
+            <ImageView
+                style="@style/styles_recommend_imageview"
+                android:src="@drawable/selector_recommend_hotsong" />
+
+            <TextView
+                style="@style/styles_recommend_textview"
+                android:text="@string/fragment_hotsong_recommend_str" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_splitline_height"
+        android:background="@color/color_splitlint_bg" />
+</LinearLayout>

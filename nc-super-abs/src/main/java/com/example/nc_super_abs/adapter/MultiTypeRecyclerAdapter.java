@@ -20,14 +20,14 @@ import java.util.List;
  * @autho : dongyiming
  * @data : 2017/6/6 12:31
  */
-public class MultiTypeRecyclerAdapter<T extends WrapperBean<T>> extends RecyclerView.Adapter<BaseViewHolder> {
+public class MultiTypeRecyclerAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
     protected Logger logger = LoggerFactory.getLogger(getClass());
 
-    private List<WrapperBean<T>> dataList;
+    private List<T> dataList;
     private Context mContext;
     private BaseItemViewController baseItemViewController;
 
-    public MultiTypeRecyclerAdapter(Context mContext, List<WrapperBean<T>> dataList) {
+    public MultiTypeRecyclerAdapter(Context mContext, List<T> dataList) {
 
         this.dataList = dataList;
         this.mContext = mContext;
@@ -37,7 +37,7 @@ public class MultiTypeRecyclerAdapter<T extends WrapperBean<T>> extends Recycler
     @Override
     public int getItemViewType(int position) {
 
-        return dataList.get(position).getType();
+        return 0;
     }
 
     @Override
@@ -59,7 +59,7 @@ public class MultiTypeRecyclerAdapter<T extends WrapperBean<T>> extends Recycler
     @Override
     public void onBindViewHolder(BaseViewHolder holder, int position) {
 
-        baseItemViewController.convert(holder, dataList.get(position), dataList.get(position).getType());
+        baseItemViewController.convert(holder, null, 0);
     }
 
     public void addItems(IMultiRecyclerViewListener<T> item, int type) {

@@ -8,12 +8,14 @@ import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.identityscope.IdentityScopeType;
 import org.greenrobot.greendao.internal.DaoConfig;
 
+import com.example.uc_common_bean.vo.HotItemInfo;
 import com.example.uc_common_bean.vo.MenuInfo;
 import com.example.uc_common_bean.vo.MenuSong;
 import com.example.uc_common_bean.vo.SingerInfo;
 import com.example.uc_common_bean.vo.SongInfo;
 import com.example.uc_common_bean.vo.UserInfo;
 
+import com.example.uc_common_bean.greedao.HotItemInfoDao;
 import com.example.uc_common_bean.greedao.MenuInfoDao;
 import com.example.uc_common_bean.greedao.MenuSongDao;
 import com.example.uc_common_bean.greedao.SingerInfoDao;
@@ -29,12 +31,14 @@ import com.example.uc_common_bean.greedao.UserInfoDao;
  */
 public class DaoSession extends AbstractDaoSession {
 
+    private final DaoConfig hotItemInfoDaoConfig;
     private final DaoConfig menuInfoDaoConfig;
     private final DaoConfig menuSongDaoConfig;
     private final DaoConfig singerInfoDaoConfig;
     private final DaoConfig songInfoDaoConfig;
     private final DaoConfig userInfoDaoConfig;
 
+    private final HotItemInfoDao hotItemInfoDao;
     private final MenuInfoDao menuInfoDao;
     private final MenuSongDao menuSongDao;
     private final SingerInfoDao singerInfoDao;
@@ -44,6 +48,9 @@ public class DaoSession extends AbstractDaoSession {
     public DaoSession(Database db, IdentityScopeType type, Map<Class<? extends AbstractDao<?, ?>>, DaoConfig>
             daoConfigMap) {
         super(db);
+
+        hotItemInfoDaoConfig = daoConfigMap.get(HotItemInfoDao.class).clone();
+        hotItemInfoDaoConfig.initIdentityScope(type);
 
         menuInfoDaoConfig = daoConfigMap.get(MenuInfoDao.class).clone();
         menuInfoDaoConfig.initIdentityScope(type);
@@ -60,12 +67,14 @@ public class DaoSession extends AbstractDaoSession {
         userInfoDaoConfig = daoConfigMap.get(UserInfoDao.class).clone();
         userInfoDaoConfig.initIdentityScope(type);
 
+        hotItemInfoDao = new HotItemInfoDao(hotItemInfoDaoConfig, this);
         menuInfoDao = new MenuInfoDao(menuInfoDaoConfig, this);
         menuSongDao = new MenuSongDao(menuSongDaoConfig, this);
         singerInfoDao = new SingerInfoDao(singerInfoDaoConfig, this);
         songInfoDao = new SongInfoDao(songInfoDaoConfig, this);
         userInfoDao = new UserInfoDao(userInfoDaoConfig, this);
 
+        registerDao(HotItemInfo.class, hotItemInfoDao);
         registerDao(MenuInfo.class, menuInfoDao);
         registerDao(MenuSong.class, menuSongDao);
         registerDao(SingerInfo.class, singerInfoDao);
@@ -74,11 +83,16 @@ public class DaoSession extends AbstractDaoSession {
     }
     
     public void clear() {
+        hotItemInfoDaoConfig.getIdentityScope().clear();
         menuInfoDaoConfig.getIdentityScope().clear();
         menuSongDaoConfig.getIdentityScope().clear();
         singerInfoDaoConfig.getIdentityScope().clear();
         songInfoDaoConfig.getIdentityScope().clear();
         userInfoDaoConfig.getIdentityScope().clear();
+    }
+
+    public HotItemInfoDao getHotItemInfoDao() {
+        return hotItemInfoDao;
     }
 
     public MenuInfoDao getMenuInfoDao() {

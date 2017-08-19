@@ -1,9 +1,6 @@
 package com.example.nc_super_abs.interaction;
 
-import com.example.nc_super_abs.adapter.WrapperBean;
 import com.example.nc_super_abs.adapter.viewholder.BaseViewHolder;
-
-import java.util.List;
 
 /**
  * @version : 1.0
@@ -11,7 +8,7 @@ import java.util.List;
  * @autho : dongyiming
  * @data : 2017/6/6 13:10
  */
-public interface IMultiRecyclerViewListener<T extends WrapperBean> {
+public interface IMultiRecyclerViewListener<T> {
 
     /**
      * 得到当前类型的layoutId,用于创建Viewholder

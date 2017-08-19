@@ -2,9 +2,9 @@
 <resources>
 
     <color name="color_bg_top_red">#d33a31</color>
-    <color name="color_bg_top_white">#feffff</color>
+    <color name="color_bg_top_white">#ececec</color>
     <color name="color_bg_top_black">#000000</color>
-    <color name="color_padding_chatlist">#f2f4f5</color>
+    <color name="color_padding_chatlist">#fafdfd</color>
     <color name="color_bg_white">#ffffff</color>
     <color name="color_chatlist_item_desc">#303131</color>
     <color name="color_chatlist_header_title">#616262</color>
@@ -14,7 +14,20 @@
     <color name="color_tablayout_textcolor">#666666</color>
     <color name="color_splitlint_bg">#dadcdd</color>
     <color name="color_itemcontroller">#797a7b</color>
-    <color name="color_gray_text">#919293</color>
-    <color name="color_bg_homepage_bottom">#202020</color>
+    <color name="color_gray_text">#d9d9d9</color>
+    <color name="color_bg_homepage_bottom">#00000000</color>
+    <color name="color_bg_toolbar_white">#f8f8f8</color>
+    <color name="color_bg_home_bottom">#f9f9f9</color>
+    <color name="color_bg_view">#ededed</color>
+    <color name="color_desc_txt">#888888</color>
+    <color name="color_green">#4687d7</color>
+    <color name="color_splite_line">#d2d2d2</color>
+    <color name="color_video_function_bg">#80000000</color>
+
+    <!--daily-->
+    <color name="color_bg_item">#f3f3f3</color>
+    <color name="color_seekbar_progress">#4687d7</color>
+    <color name="color_seekbar_second">#adadad</color>
+
 
 </resources>

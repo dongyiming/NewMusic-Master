@@ -73,6 +73,7 @@ public class CommonDecoration extends RecyclerView.ItemDecoration {
 
             LinearLayoutManager linearLayoutManager = (LinearLayoutManager) layoutManager;
             if (linearLayoutManager.getOrientation() == LinearLayoutManager.VERTICAL) {
+
                 getVerticalLinearLayoutItemOffsets(outRect);
             } else {
                 getHorizontalLinearLayoutItemOffsets(outRect);

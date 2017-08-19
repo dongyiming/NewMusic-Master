@@ -10,7 +10,7 @@ android {
     buildToolsVersion "23.0.3"//构建工具的版本
     defaultConfig {
         applicationId "com.example.pver.newcatser"//应用程序的id，在市场上使用的包名
-        minSdkVersion 11//最小sdk版本支持
+        minSdkVersion 21//最小sdk版本支持
         targetSdkVersion 23//目标sdk版本
         versionCode 1//应用程序版本号
         versionName "1.0"//应用程序版本名称

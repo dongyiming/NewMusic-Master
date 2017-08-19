@@ -1,12 +1,15 @@
 package com.example.nc_basic_ui.controller;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.nc_basic_biz.core.MenuInfoManager;
 import com.example.nc_super_abs.controller.BaseController;
 import com.example.nc_super_abs.interaction.ICommonInvokeResult;
+import com.example.uc_common_bean.enums.MenuType;
 import com.example.uc_common_bean.vo.MenuInfo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,4 +33,29 @@ public class RecommendController extends BaseController {
         menuInfoManager.getRecMenuInfos(commonInvokeResult);
     }
 
+    /**
+     * 获取分类数据
+     *
+     * @return
+     */
+    public List<MenuInfo> getList() {
+
+        List<MenuInfo> menuInfos = new ArrayList<>();
+        for (int i = 2; i <= 7; i++) {
+            MenuInfo menuInfo = buildTitleMenuInfo(i);
+            menuInfos.add(menuInfo);
+            List<MenuInfo> infos = menuInfoManager.selectByType(i);
+            if (infos != null && !infos.isEmpty()) {
+                menuInfos.addAll(infos);
+            }
+        }
+        return menuInfos;
+    }
+
+    public MenuInfo buildTitleMenuInfo(int type) {
+        MenuInfo menuInfo = new MenuInfo();
+        menuInfo.setMenuName(MenuType.valueOf(type));
+        menuInfo.setMenuType(998);
+        return menuInfo;
+    }
 }

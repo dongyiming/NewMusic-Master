@@ -8,7 +8,7 @@ package com.example.nc_super_abs.interaction;
  */
 public interface ICommonInvokeResult<T, E> {
 
-    void OnResult(T var1);
+    void onResult(T var1);
 
     void onFailure(E var1);
 
