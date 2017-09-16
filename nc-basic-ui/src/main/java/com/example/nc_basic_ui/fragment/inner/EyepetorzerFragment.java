@@ -4,10 +4,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.example.nc_basic_biz.utils.IntentUtils;
-import com.example.nc_basic_biz.utils.MapUtils;
+import com.example.nc_common_resource.utils.IntentUtils;
+import com.example.nc_common_resource.utils.MapUtils;
 import com.example.nc_basic_ui.R;
-import com.example.nc_basic_ui.activity.AudioPlayerActivity;
+import com.example.nc_basic_ui.activity.VideoPlayerActivity;
 import com.example.nc_basic_ui.activity.EyepertorzerRollViewActivity;
 import com.example.nc_basic_ui.adapter.EyepetorzerAdapter;
 import com.example.nc_basic_ui.controller.EyepetorzerController;
@@ -102,8 +102,7 @@ public class EyepetorzerFragment extends BaseInnerFragment implements IWidgetCli
         if (cardUrl != null) {
             IntentUtils.startActivity(getActivity(), EyepertorzerRollViewActivity.class, "url", cardUrl);
         } else if (dateId != null) {
-           //AudioPlayerActivity.IntentActivity(getActivity(), "url", dateId);
-            AudioPlayerActivity.startIntent(getActivity(), view, "dongyiming",dateId);
+            VideoPlayerActivity.startIntent(getActivity(), view, "dongyiming",dateId);
         }
 
     }
@@ -123,7 +122,7 @@ public class EyepetorzerFragment extends BaseInnerFragment implements IWidgetCli
 
         List<HotItemInfo> videoBeanForClients = MapUtils.getInfos(hotItemInfos, getActivity().getResources().getString(R.string.video_str));
         if (START_INDEX == 0) {
-            showContentView();
+            closeLoadingView();
             List<HotItemInfo> horizontalScrollCards = MapUtils.getInfos(hotItemInfos, getActivity().getResources().getString(R.string.card_str));
             mAdapter = new EyepetorzerAdapter(getActivity(), horizontalScrollCards, videoBeanForClients, this);
             recyclerView.setAdapter(mAdapter);

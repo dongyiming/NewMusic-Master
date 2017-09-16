@@ -1,7 +1,5 @@
 package com.example.nc_basic_biz.core;
 
-import android.util.Log;
-
 import com.example.nc_basic_biz.http.IMenuInfoHttpInvoker;
 import com.example.nc_basic_biz.http.MenuInfoHttpInvoker;
 import com.example.nc_basic_biz.repository.IMenuRepository;
@@ -97,36 +95,6 @@ public class MenuInfoManager {
     }
 
     /**
-     * 从数据库读取数据
-     *
-     * @param type
-     * @return
-     */
-    public List<MenuInfo> selectByType(int type) {
-        return menuRepository.selectByType(type);
-    }
-
-    /**
-     * 本地获取分页数据
-     *
-     * @param type
-     * @param startIndex
-     * @param pageCount
-     * @param commonInvokeResult
-     * @return
-     */
-    public List<MenuInfo> selectPageMenuInfo(int type, int startIndex, int pageCount, final ICommonInvokeResult<List<MenuInfo>, String> commonInvokeResult) {
-
-        try {
-            List<MenuInfo> menuInfos = menuRepository.selectByType(type, startIndex, pageCount);
-            commonInvokeResult.onResult(menuInfos);
-        } catch (Exception e) {
-            commonInvokeResult.onFailure(e.toString());
-        }
-        return null;
-    }
-
-    /**
      * 通过歌单类型得到所有数据
      *
      * @param type
@@ -163,4 +131,47 @@ public class MenuInfoManager {
         menuInfoHttpInvoker.getMenuByType(type, startIndex, pageCount, resourceObserver);
     }
 
+    /*======内部方法==============================================================================================================*/
+
+    /**
+     * 从数据库读取数据
+     *
+     * @param type
+     * @return
+     */
+    public List<MenuInfo> selectByType(int type) {
+        return menuRepository.selectByType(type);
+    }
+
+    /**
+     * 本地获取分页数据
+     *
+     * @param type
+     * @param startIndex
+     * @param pageCount
+     * @param commonInvokeResult
+     * @return
+     */
+    public List<MenuInfo> selectPageMenuInfo(int type, int startIndex, int pageCount, final ICommonInvokeResult<List<MenuInfo>, String> commonInvokeResult) {
+
+        try {
+            List<MenuInfo> menuInfos = menuRepository.selectByType(type, startIndex, pageCount);
+            commonInvokeResult.onResult(menuInfos);
+        } catch (Exception e) {
+            commonInvokeResult.onFailure(e.toString());
+        }
+        return null;
+    }
+
+    /**
+     * 通过menuCode获取
+     *
+     * @param menuCode
+     * @return
+     */
+    public MenuInfo selectByMenuCode(int menuCode) {
+
+        MenuInfo menuInfo = menuRepository.selectById(menuCode);
+        return menuInfo;
+    }
 }

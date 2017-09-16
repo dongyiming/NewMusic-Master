@@ -1,14 +1,16 @@
 apply plugin: 'com.android.library'
 
+def libs = rootProject.ext.libraries
+
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion ANDROID_BUILD_SDK_VERSION as int
+    buildToolsVersion ANDROID_BUILD_TOOLS_VERSION
 
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion ANDROID_BUILD_MIN_SDK_VERSION as int
+        targetSdkVersion ANDROID_BUILD_TARGET_SDK_VERSION as int
+        versionCode VERSION_CODE as int
+        versionName VERSION_NAME
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -33,10 +35,11 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    compile 'com.android.support:appcompat-v7:23.3.0'
-    compile 'com.android.support:recyclerview-v7:23.1.0'
-    compile 'com.android.support:design:23.3.0'
-    compile 'com.jude:rollviewpager:1.4.6'
+    compile libs["appcompat-v7"]
+    compile libs["recyclerview-v7"]
+    compile libs["design"]
+    compile libs["rollviewpager"]
+
     testCompile 'junit:junit:4.12'
     compile project(':nc-super-abs')
 }

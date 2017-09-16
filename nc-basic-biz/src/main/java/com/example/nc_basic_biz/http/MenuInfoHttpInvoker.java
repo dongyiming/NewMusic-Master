@@ -1,6 +1,6 @@
 package com.example.nc_basic_biz.http;
 
-import com.example.nc_basic_biz.cache.RetrofitBuilder;
+import com.example.nc_basic_biz.http.builder.RetrofitBuilder;
 import com.example.nc_basic_biz.fun.MenuInfoFun;
 import com.example.nc_basic_biz.service.MenuService;
 import com.example.uc_common_bean.vo.MenuInfo;

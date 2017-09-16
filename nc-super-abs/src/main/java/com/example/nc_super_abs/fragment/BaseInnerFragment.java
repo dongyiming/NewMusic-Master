@@ -147,7 +147,7 @@ public abstract class BaseInnerFragment extends Fragment implements IFragmentVie
     /**
      * 关闭动画并且展示界面
      */
-    protected void showContentView() {
+    protected void closeLoadingView() {
         if (loadingView.getVisibility() != View.GONE) {
             loadingView.setVisibility(View.GONE);
         }

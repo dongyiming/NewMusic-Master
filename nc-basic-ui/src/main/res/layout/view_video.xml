@@ -115,7 +115,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginLeft="12dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="20dp"
             android:scaleType="fitXY"
             android:src="@drawable/img_video_back" />
 
@@ -125,7 +125,7 @@
             android:layout_height="43.7dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="6dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="13dp"
             android:orientation="horizontal">
 
             <RelativeLayout

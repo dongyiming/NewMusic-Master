@@ -1,5 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <!--下面两个属性是5.0之后出现的，可以在Values21专属包下创建styles或者直接用colorPrimary两属性，不用加上android:前缀-->
+        <item name="colorPrimary">@color/color_bg_status_bar</item>
+        <item name="colorPrimaryDark">@color/color_bg_status_bar</item>
+        <item name="android:windowBackground">@color/color_padding_chatlist</item>
+        <item name="android:textColorPrimary">@color/color_bg_white</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="toolbarNavigationButtonStyle">@style/iconStyle</item>
+    </style>
+
+    <!--欢迎界面取消状态栏   预留其他设置-->
+    <style name="WelcomeTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <!--图片展示界面取消状态栏  预留其他设置-->
+    <style name="TcImageDetailTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <!--视频展示界面取消状态栏  预留其他设置-->
+    <style name="VideoPlayerTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="MenuDetailTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/color_menu_transparent</item>
+        <item name="colorPrimaryDark">@color/color_bg_homepage_bottom</item>
+    </style>
+
+
+    <!--歌单title字体属性-->
+    <style name="Toolbar_TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/color_bg_white</item>
+    </style>
+
+    <!--歌单subtitle字体属性-->
+    <style name="Toolbar_SubTitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/color_gray_text</item>
+    </style>
+
+    <style name="iconStyle" parent="Base.Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:scaleType">fitXY</item>
+    </style>
+
     <!-- home page RadioButtom -->
     <style name="styles_homepage_radiobuttom">
         <item name="android:textSize">@dimen/common_sz_9</item>
@@ -44,23 +94,25 @@
         <item name="android:layout_marginTop">@dimen/dimens_recommend_image_magin_top</item>
     </style>
 
-    <!-- recommend sort recyclerView style-->
-    <style name="style_recommend_sort">
-        <!-- NOTE: clipChildren should be true on API level 10 -->
-        <item name="android:clipChildren">true</item>
-        <item name="android:clipToPadding">false</item>
-        <item name="android:paddingLeft">@dimen/dimens_recommend_sort_item_maginleft</item>
-        <item name="android:scrollbarStyle">outsideOverlay</item>
-        <item name="android:scrollbars">vertical</item>
-    </style>
-
-    <!---->
-    <style name="style_mine" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:colorPrimaryDark">#00000000</item>
-        <item name="android:colorPrimary">#00000000</item>
-    </style>
+    <!-- recommend sort recyclerView style--><style name="style_recommend_sort">
+    <!-- NOTE: clipChildren should be true on API level 10 -->
+    <item name="android:clipChildren">true</item>
+    <item name="android:clipToPadding">false</item>
+    <item name="android:paddingLeft">@dimen/dimens_recommend_sort_item_maginleft</item>
+    <item name="android:scrollbarStyle">outsideOverlay</item>
+    <item name="android:scrollbars">vertical</item>
+</style>
 
     <style name="TabLayoutTextStyle">
         <item name="android:textSize">@dimen/common_sz_13</item>
+    </style>
+
+    <!--mine txt-->
+    <style name="style_mine_txt">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/color_txtview_mine</item>
+        <item name="android:textSize">@dimen/common_sz_14</item>
+        <item name="android:layout_centerInParent">true</item>
     </style>
 </resources>

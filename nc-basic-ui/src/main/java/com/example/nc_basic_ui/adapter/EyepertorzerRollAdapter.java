@@ -42,12 +42,13 @@ public class EyepertorzerRollAdapter extends LoopPagerAdapter implements View.On
         if (hotItemInfos != null && !hotItemInfos.isEmpty()) {
 
             String imageUrl = hotItemInfos.get(position).getImage();
-            if (imageUrl.endsWith(".jpeg")) {
-
-                Glide.with(mContext).load(imageUrl).asGif().diskCacheStrategy(DiskCacheStrategy.NONE).into(view);
-            } else {
-                Glide.with(mContext).load(imageUrl).asBitmap().into(view);
-            }
+//            if (imageUrl.endsWith(".jpeg")) {
+//
+//                Glide.with(mContext).load(imageUrl).asGif().diskCacheStrategy(DiskCacheStrategy.NONE).into(view);
+//            } else {
+//                Glide.with(mContext).load(imageUrl).asBitmap().into(view);
+//            }
+            Glide.with(mContext).load(imageUrl).asBitmap().into(view);
             view.setTag(R.string.card_str, imageUrl);
             view.setOnClickListener(this);
         }

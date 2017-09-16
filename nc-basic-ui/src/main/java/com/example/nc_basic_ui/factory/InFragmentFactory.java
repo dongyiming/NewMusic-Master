@@ -2,8 +2,8 @@ package com.example.nc_basic_ui.factory;
 
 import com.example.nc_basic_ui.fragment.inner.DailyNewsFragment;
 import com.example.nc_basic_ui.fragment.inner.EyepetorzerFragment;
-import com.example.nc_basic_ui.fragment.inner.MenuListFragment;
-import com.example.nc_basic_ui.fragment.inner.RecommendFragment;
+import com.example.nc_basic_ui.fragment.inner.MenuCollectionFragment;
+import com.example.nc_basic_ui.fragment.inner.RecommendMenuFragment;
 import com.example.nc_super_abs.fragment.BaseInnerFragment;
 
 import java.util.HashMap;
@@ -38,10 +38,10 @@ public class InFragmentFactory {
             switch (page) {
 
                 case PAGE_ONE:
-                    mFragmentFactory = new RecommendFragment();
+                    mFragmentFactory = new RecommendMenuFragment();
                     break;
                 case PAGE_TWO:
-                    mFragmentFactory = new MenuListFragment();
+                    mFragmentFactory = new MenuCollectionFragment();
                     break;
                 case PAGE_THREE:
                     mFragmentFactory = new EyepetorzerFragment();

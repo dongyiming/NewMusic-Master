@@ -1,19 +1,24 @@
 apply plugin: 'com.android.application'//主程序的build.gradle文件，作为主程序的标识
 
+def libs = rootProject.ext.libraries
+def testLibs = rootProject.ext.testingLibraries
+def cfg = rootProject.ext.configuration
+
 /**
  * sdk版本设置规则:
  * minSdkVersion <= targetSdkVersion <= compileSdkVersion
  * minSdkVersion <= buildToolsVersion <= compileSdkVersion
  */
 android {
-    compileSdkVersion 23//当前向前兼容sdk的版本
-    buildToolsVersion "23.0.3"//构建工具的版本
+    compileSdkVersion ANDROID_BUILD_SDK_VERSION as int//当前向前兼容sdk的版本
+    buildToolsVersion ANDROID_BUILD_TOOLS_VERSION//构建工具的版本
+
     defaultConfig {
-        applicationId "com.example.pver.newcatser"//应用程序的id，在市场上使用的包名
-        minSdkVersion 21//最小sdk版本支持
-        targetSdkVersion 23//目标sdk版本
-        versionCode 1//应用程序版本号
-        versionName "1.0"//应用程序版本名称
+        minSdkVersion ANDROID_BUILD_MIN_SDK_VERSION as int//最小sdk版本支持
+        targetSdkVersion ANDROID_BUILD_TARGET_SDK_VERSION as int//目标sdk版本
+        versionCode VERSION_CODE as int//应用程序版本号
+        versionName VERSION_NAME//应用程序版本名称
+        applicationId cfg.applicationId//应用程序的id，在市场上使用的包名
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -22,6 +27,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
@@ -30,7 +36,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile libs["appcompat-v7"]
     testCompile 'junit:junit:4.12'
     compile project(':nc-basic-ui')
     compile project(':nc-cat-ui')

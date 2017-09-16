@@ -1,16 +1,22 @@
 package com.example.nc_basic_ui.adapter;
 
 import android.content.Context;
+import android.os.Build;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.nc_basic_ui.R;
 import com.example.nc_super_abs.adapter.viewholder.BaseViewHolder;
 import com.example.nc_super_abs.adapter.viewholder.MultiBaseAdapter;
 import com.example.uc_common_bean.vo.MenuInfo;
 
 import java.util.List;
+
+import jp.wasabeef.glide.transformations.BlurTransformation;
 
 /**
  * @version : 1.0
@@ -70,7 +76,25 @@ public class MenuListAdapter extends MultiBaseAdapter<MenuInfo> {
                             .into(menuImage);
                 }
             }
+        } else {
 
+            final RelativeLayout rlayout_header = (RelativeLayout)holder.getWidget(R.id.rlayout_header);
+            ImageView img_header = (ImageView) holder.getWidget(R.id.img_header);
+            Glide.with(mContext).load(R.drawable.img_menu_top).asBitmap().centerCrop().into(img_header);
+            Glide.with(mContext)
+                    .load(R.drawable.img_menu_top)
+                    /*设置高斯模糊效果,服务器请求的图片失真严重 sampling值越大颜色值会越浓*/
+                    .bitmapTransform(new BlurTransformation(mContext, 25, 20))
+                    /*设置背景 glide3.7的为Bitmap,兼容高斯模糊的glide是GlideDrawable,getCurrent()再转换成drawable*/
+                    .into(new SimpleTarget<GlideDrawable>() {
+                        @Override
+                        public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
+
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                                rlayout_header.setBackground(resource.getCurrent());
+                            }
+                        }
+                    });
         }
     }
 

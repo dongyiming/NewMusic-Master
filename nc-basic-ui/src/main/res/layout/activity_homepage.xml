@@ -22,7 +22,6 @@
         android:id="@+id/rdogroup_homepage"
         android:layout_width="match_parent"
         android:layout_height="@dimen/activity_bottom_height_dimens"
-        android:layout_gravity="bottom"
         android:background="@color/color_bg_homepage_bottom"
         android:orientation="horizontal">
 

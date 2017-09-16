@@ -7,8 +7,6 @@
 
     <com.example.nc_common_resource.view.CommonToolBar
         android:id="@+id/commonbar"
-        app:rightIcon="@drawable/img_hometop_left"
-        app:leftIcom="@drawable/img_homebar_right"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimens_toolbar_height" />
 

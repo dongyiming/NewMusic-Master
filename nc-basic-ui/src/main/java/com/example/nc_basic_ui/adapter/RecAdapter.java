@@ -1,5 +1,6 @@
 package com.example.nc_basic_ui.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,7 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.example.nc_common_resource.utils.IntentUtils;
 import com.example.nc_basic_ui.R;
+import com.example.nc_basic_ui.activity.SongMenuDetailsActivity;
 import com.example.nc_basic_ui.view.RecommendHintView;
 import com.example.nc_super_abs.adapter.viewholder.BaseViewHolder;
 import com.example.uc_common_bean.enums.MenuType;
@@ -24,7 +27,7 @@ import java.util.List;
  * @autho : dongyiming
  * @data : 2017/8/7 22:10
  */
-public class RecAdapter extends RecyclerView.Adapter<BaseViewHolder> {
+public class RecAdapter extends RecyclerView.Adapter<BaseViewHolder> implements View.OnClickListener {
 
     private Context mContext;
     private List<MenuInfo> menuInfos;
@@ -38,11 +41,11 @@ public class RecAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     private final int TYPE_RADIO = 7;//主播电台
     private final int TYPE_UNIQ_LAST = 8;//独家放送
     private final int TYPE_FOOTER = 9;
+    private int type;
 
     public RecAdapter(Context mContext, List<MenuInfo> menuInfos) {
         this.mContext = mContext;
         this.menuInfos = menuInfos;
-
     }
 
     @Override
@@ -133,6 +136,9 @@ public class RecAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             if (menuInfo.getMenuPicurl() != null) {
                 Glide.with(mContext).load(menuInfo.getMenuPicurl()).override(357, 357).placeholder(R.drawable.img_default_357_357).into(menuPic);
             }
+            type = TYPE_REC_MENU;
+            menuPic.setTag(R.string.app_name, menuInfo.getMenuCode());
+            menuPic.setOnClickListener(this);
         } else if (itemViewType == TYPE_UNIQ_NORMAL) {
             holder.setText(R.id.txt_menu_name, menuInfo.getMenuName());
             ImageView menuPic = (ImageView) holder.getWidget(R.id.img_latest_menu);
@@ -228,6 +234,16 @@ public class RecAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                     return 0;
                 }
             });
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+
+        if (view.getId() == R.id.img_latest_menu) {
+            int menuCode = (int) view.getTag(R.string.app_name);
+            Log.e("dongyiming", "menuCode = " + menuCode);
+            IntentUtils.startActivityShareView((Activity) mContext, SongMenuDetailsActivity.class, view, "menuImage", "menuCode", String.valueOf(menuCode));
         }
     }
 }

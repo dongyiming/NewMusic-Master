@@ -82,6 +82,17 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
     }
 
     /**
+     * @param viewId
+     * @param res
+     * @return
+     */
+    public BaseViewHolder setTextColor(int viewId, int res) {
+        TextView tv = (TextView) getWidget(viewId);
+        tv.setTextColor(res);
+        return this;
+    }
+
+    /**
      * imageview填充
      *
      * @param viewId

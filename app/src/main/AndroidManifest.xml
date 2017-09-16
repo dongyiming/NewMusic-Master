@@ -3,12 +3,13 @@
     package="com.example.pver.newcatser">
 
     <application
-        android:name="com.example.pver.newcatser.NewCatserApplication"
+        android:name=".NewCatserApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:theme="@style/AppBaseTheme"
         android:supportsRtl="true">
-        <activity android:name="com.example.nc_basic_ui.activity.HomePageActivity">
+        <activity android:name="com.example.pver.newcatser.SplashActivity" android:theme="@style/WelcomeTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

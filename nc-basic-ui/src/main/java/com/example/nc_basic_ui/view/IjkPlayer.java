@@ -24,8 +24,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.dou361.ijkplayer.widget.IjkVideoView;
 import com.dou361.ijkplayer.widget.PlayStateParams;
-import com.example.nc_basic_biz.utils.TimeUtils;
 import com.example.nc_basic_ui.R;
+import com.example.nc_common_resource.utils.TimeUtils;
 import com.example.uc_common_bean.vo.HotItemInfo;
 
 import org.slf4j.Logger;
@@ -165,7 +165,10 @@ public class IjkPlayer {
     }
 
     /**
-     * 设置一些相关属性
+     * @Description: 设置一些相关属性
+     * @author: dongyiming
+     * @date: 2017/8/7  17:59
+     * @param:
      */
     private void setAttribute() {
         //seekbar默认有左右边距，必须设置padding值,布局设置无效
@@ -177,6 +180,12 @@ public class IjkPlayer {
         }
     }
 
+    /**
+     * @Description: 注册事件
+     * @author: dongyiming
+     * @date: 2017/8/7  17:59
+     * @param:
+     */
     private void registerWidgetEvent() {
 
         backView.setOnClickListener(onClickListener);
@@ -190,7 +199,10 @@ public class IjkPlayer {
     }
 
     /**
-     * 手势
+     * @Description: 手势
+     * @author: dongyiming
+     * @date: 2017/8/7  18:00
+     * @param:
      */
     private void initGesture() {
 
@@ -200,9 +212,10 @@ public class IjkPlayer {
     }
 
     /**
-     * 一些系统管理初始化
-     *
-     * @return
+     * @Description: 一些系统管理初始化
+     * @author: dongyiming
+     * @date: 2017/8/7  18:00
+     * @param:
      */
     public void initManager() {
 
@@ -636,12 +649,21 @@ public class IjkPlayer {
         }
     };
 
+    /**
+     * TODO:未准备完成时退出界面ANR的问题没解决
+     *
+     * @Description: 关闭界面
+     * @author: dongyiming
+     * @date: 2017/8/16  18:57
+     * @param:
+     */
     public void finishView() {
 
-        if (videoView != null) {
+        if (videoView != null && isAlready) {
             videoView.stopPlayback();
-            ((Activity) mContext).finishAfterTransition();
         }
+        videoView.release(true);
+        ((Activity) mContext).finishAfterTransition();
     }
 
     private View.OnClickListener onClickListener = new View.OnClickListener() {

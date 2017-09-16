@@ -1,29 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- menu content-->
-    <dimen name="dimens_menu_content_top_height">131dp</dimen>
-    <dimen name="dimens_menu_content_bottom_height">57dp</dimen>
-    <dimen name="dimens_menu_content_padding">15dp</dimen>
-    <dimen name="dimens_menu_content_img_height">126dp</dimen>
-    <dimen name="dimens_menu_content_img_maginleft">23.3dp</dimen>
-    <dimen name="dimens_menu_content_desc_height">82dp</dimen>
-    <dimen name="dimens_menu_content_desc_width">175dp</dimen>
-    <dimen name="dimens_menu_content_desc_maginleft">17.6dp</dimen>
-    <dimen name="dimens_menu_name_magintop">7dp</dimen>
-    <dimen name="dimens_menu_author_height">34dp</dimen>
-    <dimen name="dimens_menu_author_img_height">30dp</dimen>
-    <dimen name="dimens_menu_author_img_maginright">5dp</dimen>
-    <dimen name="dimens_menu_author_arrows_maginright">8dp</dimen>
-    <dimen name="dimens_menu_function_widht">82dp</dimen>
-    <dimen name="dimens_menu_function_magin">19dp</dimen>
-    <dimen name="dimens_menu_function_padding">6.66dp</dimen>
-    <dimen name="dimens_menu_function_img_magintop">10dp</dimen>
 
-    <!-- play title-->
-    <dimen name="dimens_play_title_height">50dp</dimen>
-    <dimen name="dimens_play_maginleft">13dp</dimen>
-    <dimen name="dimens_play_txt_maginleft">14dp</dimen>
-    <dimen name="dimens_play_select_width">65dp</dimen>
 
 </resources>

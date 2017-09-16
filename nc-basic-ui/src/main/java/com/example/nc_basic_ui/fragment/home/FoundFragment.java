@@ -1,10 +1,24 @@
 package com.example.nc_basic_ui.fragment.home;
 
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.example.nc_basic_ui.R;
-import com.example.nc_super_abs.fragment.BaseFragment;
+import com.example.nc_basic_ui.adapter.TuChongAdapter;
+import com.example.nc_basic_ui.controller.TcImageController;
+import com.example.nc_basic_ui.interaction.ITcImageView;
+import com.example.nc_common_resource.view.RefreshRecyclerView;
+import com.example.nc_super_abs.fragment.BaseInnerFragment;
+import com.example.nc_super_abs.itemdecoration.CommonDecoration;
+import com.example.uc_common_bean.decoration.DecorationInfo;
+import com.example.uc_common_bean.vo.tc.TuChong;
+
+import java.util.List;
 
 /**
  * @version : 1.0
@@ -12,28 +26,96 @@ import com.example.nc_super_abs.fragment.BaseFragment;
  * @autho : dongyiming
  * @data : 2017/5/23 18:00
  */
-public class FoundFragment extends BaseFragment {
+public class FoundFragment extends BaseInnerFragment implements ITcImageView {
 
+
+    private FrameLayout flayout_loading;
+    private LinearLayout llayout_loading;
+    private ImageView img_progress;
+    private LinearLayout llayout_error;
+    private RefreshRecyclerView recyclerview;
+    private SwipeRefreshLayout swipeRefreshView;
+    private TcImageController tcImageController;
+    //首页序列号
+    private int page = 1;
+    private TuChongAdapter mAdapter;
 
     @Override
     public View setRootView(LayoutInflater inflater) {
 
-        View view = inflater.inflate(R.layout.fragment_catrecommend, null);
+        View view = inflater.inflate(R.layout.fragment_found, null);
+        recyclerview = (RefreshRecyclerView) view.findViewById(R.id.recyclerview);
+        swipeRefreshView = (SwipeRefreshLayout) view.findViewById(R.id.swipere_fresh_view);
         return view;
     }
 
     @Override
+    public void registerWidgetEvent() {
+
+        recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
+        DecorationInfo decorationInfo = new DecorationInfo();
+        decorationInfo.setVerticalDividerHeight(24).setColorResource(R.color.color_tc_splitlint_bg);
+        CommonDecoration commonDecoration = new CommonDecoration(getActivity(), decorationInfo, true);
+        recyclerview.addItemDecoration(commonDecoration);
+        recyclerview.setPullRefreshEnabled(false);
+        recyclerview.setOnRefreshLoadListener(refreshLoadListener);
+        swipeRefreshView.setRefreshing(false);
+        swipeRefreshView.setOnRefreshListener(refreshListener);
+        swipeRefreshView.setColorSchemeResources(R.color.color_orange, R.color.color_orange);
+    }
+
+    @Override
     public void initComponent() {
-
+        tcImageController = new TcImageController(getActivity(), this);
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
+    public void initData() {
+        tcImageController.onInitFinished();
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onRefresh(List<TuChong.FeedListBean> feedListBeen) {
+
+        closeLoadingView();
+        if (mAdapter != null) {
+            mAdapter = null;
+        }
+        swipeRefreshView.setRefreshing(false);
+        mAdapter = new TuChongAdapter(getActivity(), feedListBeen);
+        recyclerview.setAdapter(mAdapter);
     }
+
+    @Override
+    public void onLoadMore(List<TuChong.FeedListBean> feedListBeen) {
+
+        recyclerview.loadMoreComplete();
+        if (mAdapter != null) {
+            mAdapter.addAll(feedListBeen);
+        }
+    }
+
+    @Override
+    public void onLoadFailed(String errorMsg) {
+        page--;
+    }
+
+    private RefreshRecyclerView.OnRefreshLoadListener refreshLoadListener = new RefreshRecyclerView.OnRefreshLoadListener() {
+        @Override
+        public void onRefresh() {
+        }
+
+        @Override
+        public void onLoadMore() {
+            page++;
+            tcImageController.getMoreRecommendList(page);
+        }
+    };
+
+    private SwipeRefreshLayout.OnRefreshListener refreshListener = new SwipeRefreshLayout.OnRefreshListener() {
+        @Override
+        public void onRefresh() {
+            tcImageController.onInitFinished();
+        }
+    };
 }

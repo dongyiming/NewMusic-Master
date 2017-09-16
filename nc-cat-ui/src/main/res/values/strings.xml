@@ -1,13 +1,5 @@
 <resources>
     <string name="app_name">NC-CAT-UI</string>
-    <string name="menu_item1_str">选择歌曲顺序</string>
-    <string name="menu_item2_str">清空下载文件</string>
-    <string name="menu_item3_str">举报</string>
-    <string name="menu_func_collect_str">收藏</string>
-    <string name="menu_func_criticism_str">评论</string>
-    <string name="menu_func_share_str">分享</string>
-    <string name="menu_func_download_str">下载</string>
-    <string name="menu_playall_str">播放全部</string>
-    <string name="menu_select_str">多选</string>
+
 
 </resources>

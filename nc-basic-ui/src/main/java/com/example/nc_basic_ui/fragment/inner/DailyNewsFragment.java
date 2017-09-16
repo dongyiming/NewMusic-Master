@@ -5,7 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.example.nc_basic_biz.utils.TimeUtils;
+import com.example.nc_common_resource.utils.TimeUtils;
 import com.example.nc_basic_ui.R;
 import com.example.nc_basic_ui.activity.NewsInfoActivity;
 import com.example.nc_basic_ui.adapter.DailyNewsAdapter;
@@ -61,7 +61,7 @@ public class DailyNewsFragment extends BaseInnerFragment implements IWidgetClick
         public void onResult(LatestNews latestNews) {
 
             date = latestNews.getDate();
-            showContentView();
+            closeLoadingView();
             mAdapter = new DailyNewsAdapter(getActivity(), latestNews.getTop_stories(), latestNews.getStories(), iWidgetClickListener);
             recyclerview.setAdapter(mAdapter);
         }

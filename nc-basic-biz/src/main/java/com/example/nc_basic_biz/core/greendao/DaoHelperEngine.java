@@ -5,7 +5,7 @@ import android.content.ContextWrapper;
 import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.nc_basic_biz.utils.FileUtils;
+import com.example.nc_common_resource.utils.FileUtils;
 import com.example.uc_common_bean.greedao.DaoMaster;
 import com.example.uc_common_bean.greedao.DaoSession;
 

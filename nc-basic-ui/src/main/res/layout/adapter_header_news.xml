@@ -7,7 +7,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimes_news_rollpager_height">
+        android:layout_height="@dimen/rollpager_height_dimens">
 
         <com.jude.rollviewpager.RollPagerView
             android:id="@+id/rollpager_news"
@@ -27,8 +27,8 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/dimes_news_title_marginleft"
-            android:hint="@string/fragment_news_title"
-            android:textColor="@color/color_bg_top_black"
+            android:text="@string/fragment_news_title"
+            android:textColor="@color/color_list_title"
             android:textSize="@dimen/common_sz_14" />
     </RelativeLayout>
 </LinearLayout>

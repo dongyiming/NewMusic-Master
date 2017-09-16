@@ -1,5 +1,7 @@
 package com.example.nc_basic_biz.cache;
 
+import com.example.nc_basic_biz.http.builder.RetrofitBuilder;
+
 /**
  * @version : 1.0
  * @Description :

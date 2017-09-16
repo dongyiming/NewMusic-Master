@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.example.nc_basic_biz.utils.TimeUtils;
+import com.example.nc_common_resource.utils.TimeUtils;
 import com.example.nc_basic_ui.R;
 import com.example.nc_basic_ui.view.RecommendHintView;
 import com.example.nc_super_abs.adapter.eyes.MultiEyesAdapter;
@@ -55,11 +55,11 @@ public class EyepetorzerAdapter extends MultiEyesAdapter<HotItemInfo, HotItemInf
     @Override
     public int getLayoutId(int type) {
         if (type == TYPE_HEADER) {
-            return R.layout.item_header_rollview;
+            return R.layout.adapter_item_header_rollview;
         } else if (type == TYPE_TITLE) {
             return R.layout.adapter_eye_title;
         }
-        return R.layout.item_eye;
+        return R.layout.adapter_item_eye;
     }
 
     @Override

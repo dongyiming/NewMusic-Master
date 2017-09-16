@@ -43,7 +43,7 @@ public class SettingFragment extends BaseFragment {
 
             @Override
             public int getLayoutId() {
-                return R.layout.item_eye;
+                return R.layout.adapter_item_eye;
             }
         });
 

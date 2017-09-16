@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">NC-SUPER-ABS</string>
+
+    <string name="str_webview_error">网络错误，请检查网络</string>
+    <string name="str_webview_loading">加载中...</string>
+    <string name="str_webview_load_error">加载失败</string>
+
 </resources>

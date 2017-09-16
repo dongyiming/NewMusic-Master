@@ -48,10 +48,7 @@ public class CommonDecoration extends RecyclerView.ItemDecoration {
         this.verticalDividerMaginLeft = decorationInfo.getVerticalDividerMaginLeft();
 
         this.colorResource = decorationInfo.getColorResource();
-
         paint = new Paint();
-        paint.setColor(colorResource);
-
     }
 
     /**
@@ -102,10 +99,8 @@ public class CommonDecoration extends RecyclerView.ItemDecoration {
 
             LinearLayoutManager linearLayoutManager = (LinearLayoutManager) layoutManager;
             if (linearLayoutManager.getOrientation() == LinearLayoutManager.VERTICAL) {
-
                 drawLinearLayoutVertical(c, parent);
             } else {
-
                 drawLinearLayoutHorizontal(c, parent);
             }
         }
@@ -181,6 +176,7 @@ public class CommonDecoration extends RecyclerView.ItemDecoration {
                     .getLayoutParams();
             final int top = child.getBottom() + params.bottomMargin;
             final int bottom = top + verticalDividerHeight;
+            paint.setColor(colorResource);
             c.drawRect(left, top, right, bottom, paint);
         }
     }
@@ -205,6 +201,7 @@ public class CommonDecoration extends RecyclerView.ItemDecoration {
                     .getLayoutParams();
             final int left = child.getRight() + params.rightMargin;
             final int right = left + horizontalDividerWidth;
+            paint.setColor(colorResource);
             c.drawRect(left, top, right, bottom, paint);
         }
     }
@@ -232,6 +229,7 @@ public class CommonDecoration extends RecyclerView.ItemDecoration {
                 int top = childView.getBottom() + params.bottomMargin;
                 int right = left + childView.getWidth();
                 int bottom = top + bottomDividerHeight;
+                paint.setColor(colorResource);
                 c.drawRect(left, top, right, bottom, paint);
             }
         }
@@ -260,6 +258,7 @@ public class CommonDecoration extends RecyclerView.ItemDecoration {
                 int top = childView.getTop() - params.topMargin;
                 int bottom = top + childView.getHeight() + params.bottomMargin + bottomDividerHeight;
                 int left = right - leftDividerWidth;
+                paint.setColor(colorResource);
                 c.drawRect(left, top, right, bottom, paint);
             }
         }

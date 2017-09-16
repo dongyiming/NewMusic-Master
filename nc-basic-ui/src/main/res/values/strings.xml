@@ -35,4 +35,13 @@
     <string name="video_str">VideoBeanForClient</string>
     <string name="card_str">HorizontalScrollCard</string>
     <string name="hot_str">近 期 热 门</string>
+
+    <!--menudetail-->
+    <string name="string_menu">歌单</string>
+    <string name="string_menu_title_desc">编辑推荐: 你不喜欢也没有办法</string>
+
+    <!--behavior-->
+    <string name="string_overscroll_behavior">com.example.nc_common_resource.view.design.AppBarLayoutScrollViewBehavior</string>
+
+
 </resources>

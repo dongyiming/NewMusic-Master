@@ -15,7 +15,6 @@
         android:id="@+id/layout_video_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="14dp"
         android:orientation="vertical">
 
         <TextView
@@ -25,13 +24,16 @@
             android:layout_marginTop="18dp"
             android:ellipsize="end"
             android:singleLine="true"
+            android:layout_marginLeft="14dp"
+            android:textStyle="bold"
             android:textColor="@color/color_bg_white"
-            android:textSize="@dimen/common_sz_14" />
+            android:textSize="@dimen/common_sz_15" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="9dp"
+            android:layout_marginLeft="14dp"
             android:orientation="horizontal">
 
             <TextView
@@ -62,12 +64,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:textColor="@color/color_bg_white"
+            android:layout_marginLeft="14dp"
+            android:textStyle="normal"
             android:textSize="@dimen/common_sz_12" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="23dp"
+            android:layout_marginLeft="14dp"
             android:orientation="horizontal">
 
             <RelativeLayout
@@ -164,10 +169,11 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.3dp"
-        android:background="@color/color_gray_text" />
+        android:layout_height="0.01dp"
+        android:background="@color/color_transparent" />
 
     <RelativeLayout
+        android:id="@+id/rlayout_author"
         android:layout_width="match_parent"
         android:layout_height="70dp">
 
@@ -189,9 +195,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="6dp"
+                android:textStyle="bold"
                 android:layout_toRightOf="@id/cirImg_author"
                 android:textColor="@color/color_bg_white"
-                android:textSize="@dimen/common_sz_14" />
+                android:textSize="@dimen/common_sz_13" />
 
             <TextView
                 android:id="@+id/txt_author_desc"
@@ -209,11 +216,12 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.3dp"
-        android:background="@color/color_gray_text" />
+        android:layout_height="0.01dp"
+        android:background="@color/color_transparent" />
 
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent" />
 </LinearLayout>

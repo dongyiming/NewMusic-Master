@@ -21,7 +21,6 @@ import com.example.nc_common_resource.R;
  */
 public class CommonToolBar extends Toolbar {
 
-    private TextView mTextTitle;
     private ImageButton mLeftButton;
     private ImageButton mRightButton;
     private LinearLayout mSearch;
@@ -29,7 +28,10 @@ public class CommonToolBar extends Toolbar {
     private Drawable rightIcon;
     private String titleName;
     private String subtitleName;
+    private TextView mTextTitle;
     private TextView mTextSubTitle;
+    private TextView mSubject;
+    private String subjectName;
 
     public CommonToolBar(Context context) {
         this(context, null);
@@ -50,6 +52,7 @@ public class CommonToolBar extends Toolbar {
             rightIcon = tintTypedArray.getDrawable(R.styleable.CommonToolBar_rightIcon);
             titleName = tintTypedArray.getString(R.styleable.CommonToolBar_titleName);
             subtitleName = tintTypedArray.getString(R.styleable.CommonToolBar_subtitleName);
+            subjectName = tintTypedArray.getString(R.styleable.CommonToolBar_subjectName);
 
             if (leftIcon != null) {
                 setLeftButtonIcon(leftIcon);
@@ -63,7 +66,9 @@ public class CommonToolBar extends Toolbar {
             if (subtitleName != null) {
                 setSubTitleName(subtitleName);
             }
-
+            if (subjectName != null) {
+                setSubject(subjectName);
+            }
             tintTypedArray.recycle();
         }
     }
@@ -72,6 +77,7 @@ public class CommonToolBar extends Toolbar {
 
         View mView = LayoutInflater.from(getContext()).inflate(R.layout.toolbar_homepage, null);
         mTextTitle = (TextView) mView.findViewById(R.id.txt_title);
+        mSubject = (TextView) mView.findViewById(R.id.txt_subject);
         mLeftButton = (ImageButton) mView.findViewById(R.id.imgBtn_left);
         mRightButton = (ImageButton) mView.findViewById(R.id.imgBtn_right);
         mSearch = (LinearLayout) mView.findViewById(R.id.llayout_search);
@@ -86,6 +92,24 @@ public class CommonToolBar extends Toolbar {
 
         if (mSearch != null && mSearch.getVisibility() == View.GONE) {
             mSearch.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public TextView getSubject() {
+
+        return mSubject;
+    }
+
+    public TextView getTitleView() {
+
+        return mTextTitle;
+    }
+
+    public void setSubject(String subject) {
+
+        if (mSubject != null) {
+
+            mSubject.setText(subject);
         }
     }
 

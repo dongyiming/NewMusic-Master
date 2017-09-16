@@ -4,7 +4,7 @@ import com.example.nc_basic_biz.http.EyepetozerHttpInvoker;
 import com.example.nc_basic_biz.http.IEyepetozerHttpInvoker;
 import com.example.nc_basic_biz.repository.EyepetorzerRepository;
 import com.example.nc_basic_biz.repository.IEyepetorzerRepository;
-import com.example.nc_basic_biz.utils.MapUtils;
+import com.example.nc_common_resource.utils.MapUtils;
 import com.example.nc_super_abs.interaction.ICommonInvokeResult;
 import com.example.uc_common_bean.eyepetizer.hot.HotPageBean;
 import com.example.uc_common_bean.vo.HotItemInfo;

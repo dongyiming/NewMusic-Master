@@ -1,10 +1,11 @@
 package com.example.nc_basic_ui.factory;
 
-import com.example.nc_basic_ui.fragment.home.HomeFragment;
+import android.support.v4.app.Fragment;
+
 import com.example.nc_basic_ui.fragment.home.FoundFragment;
+import com.example.nc_basic_ui.fragment.home.HomePageFragment;
 import com.example.nc_basic_ui.fragment.home.LoveHomeFragment;
 import com.example.nc_basic_ui.fragment.home.MineHomeFragment;
-import com.example.nc_super_abs.fragment.BaseFragment;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,7 +23,7 @@ public class OuterFragmentFactory {
     public static final int PAGE_THREE = 2;
     public static final int PAGE_FOUR = 3;
 
-    public static Map<Integer, BaseFragment> fragments = new HashMap<>();
+    public static Map<Integer, Fragment> fragments = new HashMap<>();
 
 
     /**
@@ -31,14 +32,14 @@ public class OuterFragmentFactory {
      * @param page
      * @return
      */
-    public static BaseFragment buildFragment(int page) {
+    public static Fragment buildFragment(int page) {
 
-        BaseFragment mFragmentFactory = fragments.get(page);
+        Fragment mFragmentFactory = fragments.get(page);
         if (mFragmentFactory == null) {
             switch (page) {
 
                 case PAGE_ONE:
-                    mFragmentFactory = new HomeFragment();
+                    mFragmentFactory = new HomePageFragment();
                     break;
                 case PAGE_TWO:
                     mFragmentFactory = new FoundFragment();

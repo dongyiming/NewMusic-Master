@@ -1,14 +1,13 @@
 package com.example.nc_basic_ui.activity;
 
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.example.nc_common_resource.utils.WindowUtils;
 import com.example.nc_basic_ui.R;
 import com.example.nc_basic_ui.adapter.HomePageAdapter;
 import com.example.nc_basic_ui.view.MyViewPager;
-import com.example.nc_common_resource.view.CommonToolBar;
 import com.example.nc_super_abs.activity.BaseActivity;
 
 
@@ -26,11 +25,9 @@ public class HomePageActivity extends BaseActivity {
     RadioButton rdobtnUnname4;
     RadioGroup rdogroupHomepage;
     MyViewPager viewpagerHomepage;
-    //CommonToolBar commonbar;
 
     @Override
     public void setRootView() {
-
         setContentView(R.layout.activity_homepage);
     }
 
@@ -42,8 +39,8 @@ public class HomePageActivity extends BaseActivity {
         rdobtnUnname3 = (RadioButton) findViewById(R.id.rdobtn_unname3);
         rdobtnUnname4 = (RadioButton) findViewById(R.id.rdobtn_unname4);
         rdogroupHomepage = (RadioGroup) findViewById(R.id.rdogroup_homepage);
-        //rdogroupHomepage.getBackground().setAlpha(255);
         viewpagerHomepage.setOffscreenPageLimit(3);
+        WindowUtils.setMiuiStatusBarDarkMode(HomePageActivity.this, true);
     }
 
     @Override
@@ -55,7 +52,6 @@ public class HomePageActivity extends BaseActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
 
                 if (checkedId == R.id.rdobtn_unname1) {
-
                     viewpagerHomepage.setCurrentItem(0, false);
                 } else if (checkedId == R.id.rdobtn_unname2) {
                     viewpagerHomepage.setCurrentItem(1, false);
@@ -112,25 +108,25 @@ public class HomePageActivity extends BaseActivity {
 
     public void switchColor(int id) {
         if (id == R.id.rdobtn_unname1) {
-            rdobtnUnname1.setTextColor(HomePageActivity.this.getResources().getColor(R.color.color_btn_homepage_pressed));
+            rdobtnUnname1.setTextColor(HomePageActivity.this.getResources().getColor(R.color.color_bg_top_red));
             rdobtnUnname2.setTextColor(HomePageActivity.this.getResources().getColor(R.color.color_btn_homepage_normal));
             rdobtnUnname3.setTextColor(HomePageActivity.this.getResources().getColor(R.color.color_btn_homepage_normal));
             rdobtnUnname4.setTextColor(HomePageActivity.this.getResources().getColor(R.color.color_btn_homepage_normal));
         } else if (id == R.id.rdobtn_unname2) {
             rdobtnUnname1.setTextColor(HomePageActivity.this.getResources().getColor(R.color.color_btn_homepage_normal));
-            rdobtnUnname2.setTextColor(HomePageActivity.this.getResources().getColor(R.color.color_btn_homepage_pressed));
+            rdobtnUnname2.setTextColor(HomePageActivity.this.getResources().getColor(R.color.color_bg_top_red));
             rdobtnUnname3.setTextColor(HomePageActivity.this.getResources().getColor(R.color.color_btn_homepage_normal));
             rdobtnUnname4.setTextColor(HomePageActivity.this.getResources().getColor(R.color.color_btn_homepage_normal));
         } else if (id == R.id.rdobtn_unname3) {
             rdobtnUnname1.setTextColor(HomePageActivity.this.getResources().getColor(R.color.color_btn_homepage_normal));
             rdobtnUnname2.setTextColor(HomePageActivity.this.getResources().getColor(R.color.color_btn_homepage_normal));
-            rdobtnUnname3.setTextColor(HomePageActivity.this.getResources().getColor(R.color.color_btn_homepage_pressed));
+            rdobtnUnname3.setTextColor(HomePageActivity.this.getResources().getColor(R.color.color_bg_top_red));
             rdobtnUnname4.setTextColor(HomePageActivity.this.getResources().getColor(R.color.color_btn_homepage_normal));
         } else if (id == R.id.rdobtn_unname4) {
             rdobtnUnname1.setTextColor(HomePageActivity.this.getResources().getColor(R.color.color_btn_homepage_normal));
             rdobtnUnname2.setTextColor(HomePageActivity.this.getResources().getColor(R.color.color_btn_homepage_normal));
             rdobtnUnname3.setTextColor(HomePageActivity.this.getResources().getColor(R.color.color_btn_homepage_normal));
-            rdobtnUnname4.setTextColor(HomePageActivity.this.getResources().getColor(R.color.color_btn_homepage_pressed));
+            rdobtnUnname4.setTextColor(HomePageActivity.this.getResources().getColor(R.color.color_bg_top_red));
         }
     }
 }
