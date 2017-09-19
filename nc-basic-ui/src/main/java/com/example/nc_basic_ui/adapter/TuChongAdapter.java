@@ -6,10 +6,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
-import com.example.nc_common_resource.utils.TimeUtils;
 import com.example.nc_basic_ui.R;
 import com.example.nc_basic_ui.activity.ImageDetailActivity;
 import com.example.nc_basic_ui.view.GridImageView;
+import com.example.nc_common_resource.utils.TimeUtils;
 import com.example.nc_super_abs.adapter.CommonAdapter;
 import com.example.nc_super_abs.adapter.viewholder.BaseViewHolder;
 import com.example.uc_common_bean.vo.tc.ImageBean;
@@ -47,7 +47,7 @@ public class TuChongAdapter extends CommonAdapter<TuChong.FeedListBean> {
     }
 
     @Override
-    public void convert(BaseViewHolder holder, TuChong.FeedListBean feedListBean, int position) {
+    public void convert(BaseViewHolder holder, final TuChong.FeedListBean feedListBean, int position) {
 
         if (feedListBean != null) {
             imageList = feedListBean.getImages();
@@ -57,23 +57,37 @@ public class TuChongAdapter extends CommonAdapter<TuChong.FeedListBean> {
                 Glide.with(mContext).load(site.getIcon()).asBitmap().into(authorView);
                 holder.setText(R.id.txt_author_name, site.getName());
             }
+            if (imageList != null && imageList.size() > 6) {
+                RelativeLayout rlayout_more = (RelativeLayout) holder.getWidget(R.id.rlayout_more);
+                rlayout_more.setVisibility(View.VISIBLE);
+                holder.setText(R.id.txt_pic_size, "共" + imageList.size() + "张照片");
+                //错位
+                rlayout_more.setTag(R.id.rlayout_more, imageList);
+                rlayout_more.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        List<ImageBean> list = (List<ImageBean>) view.getTag(R.id.rlayout_more);
+                        ImageDetailActivity.startActivity(mContext, ImageDetailActivity.class, list, 0);
+                    }
+                });
+            } else {
+                holder.setGone(R.id.rlayout_more);
+            }
             //设置时间或者热门信息
             holder.setText(R.id.txt_time, TimeUtils.Dateformat(feedListBean.getPublished_at()));
             //设置标题
-            RelativeLayout rlayout_title = (RelativeLayout) holder.getWidget(R.id.rlayout_title);
             if (feedListBean.getExcerpt() != null && !feedListBean.getExcerpt().equals("")) {
-                rlayout_title.setVisibility(View.VISIBLE);
+                holder.setVisible(R.id.rlayout_title);
                 holder.setText(R.id.txt_title, feedListBean.getExcerpt());
             } else {
-                rlayout_title.setVisibility(View.GONE);
+                holder.setGone(R.id.rlayout_title);
             }
             //设置描述
-            RelativeLayout rlayout_desc = (RelativeLayout) holder.getWidget(R.id.rlayout_desc);
             if (feedListBean.getTitle() != null && !feedListBean.getTitle().equals("")) {
-                rlayout_desc.setVisibility(View.VISIBLE);
+                holder.setVisible(R.id.rlayout_desc);
                 holder.setText(R.id.txt_desc, feedListBean.getTitle());
             } else {
-                rlayout_desc.setVisibility(View.GONE);
+                holder.setGone(R.id.rlayout_desc);
             }
             //设置评论和喜欢
             holder.setText(R.id.txt_love, feedListBean.getFavorites() + "个喜欢");

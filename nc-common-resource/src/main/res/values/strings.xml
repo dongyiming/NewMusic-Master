@@ -31,4 +31,5 @@
     <string name="menu_playall_str">播放全部</string>
     <string name="menu_select_str">多选</string>
     <string name="str_nc">NewCaster</string>
+    <string name="str_no_more">没有更多数据</string>
 </resources>

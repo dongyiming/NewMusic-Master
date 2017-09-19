@@ -53,11 +53,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:ellipsize="end"
-                android:textStyle="bold"
-                android:maxEms="18"
+                android:maxEms="16"
                 android:singleLine="true"
                 android:textColor="#222222"
-                android:textSize="17sp" />
+                android:textSize="17sp"
+                android:textStyle="bold" />
         </RelativeLayout>
 
         <com.example.nc_basic_ui.view.GridImageView
@@ -66,11 +66,38 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
+    <RelativeLayout
+        android:id="@+id/rlayout_more"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/txt_pic_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/color_orange"
+            android:textSize="@dimen/common_sz_14" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/txt_pic_size"
+            android:src="@drawable/img_arror_pic_more" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_lh_0"
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_splitlint_bg" />
+    </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -114,24 +141,24 @@
             android:id="@+id/rlayout_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp">
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:id="@+id/txt_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#ffae00"
+                android:textColor="@color/color_orange"
                 android:textSize="13sp" />
         </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="16dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="11dp"
-            android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <TextView

@@ -10,7 +10,7 @@ import com.example.uc_common_bean.decoration.DecorationInfo;
 
 /**
  * @version : 1.0
- * @Description : 建造者模式来构建RecyclerView
+ * @Description : 构建RecyclerView
  * @autho : dongyiming
  * @data : 2017/6/8 18:54
  */

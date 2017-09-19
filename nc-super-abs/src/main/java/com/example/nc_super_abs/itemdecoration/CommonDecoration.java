@@ -171,7 +171,6 @@ public class CommonDecoration extends RecyclerView.ItemDecoration {
                 continue;
             }
             final View child = parent.getChildAt(i);
-            RecyclerView v = new RecyclerView(parent.getContext());
             final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child
                     .getLayoutParams();
             final int top = child.getBottom() + params.bottomMargin;

@@ -2,7 +2,6 @@ package com.example.nc_basic_ui.fragment.inner;
 
 import android.graphics.drawable.AnimationDrawable;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
@@ -27,7 +26,7 @@ import java.util.List;
  * @autho : dongyiming
  * @data : 2017/5/24 19:36
  */
-public class MenuCollectionFragment extends BaseInnerFragment {
+public class MenusFragment extends BaseInnerFragment {
 
     /*变量*/
     private MenuListAdapter menuListAdapter;
@@ -108,7 +107,7 @@ public class MenuCollectionFragment extends BaseInnerFragment {
                 startIndex += pageCount;
                 page++;
             } else {
-                Toast.makeText(getActivity(), "没有更多数据", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.str_no_more), Toast.LENGTH_SHORT).show();
             }
             if (isRefresh) {
                 swipeView.setLoadingMore(false);

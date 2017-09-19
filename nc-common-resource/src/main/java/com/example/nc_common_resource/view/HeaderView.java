@@ -11,17 +11,18 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.nc_common_resource.R;
 
 /**
- *  @Description : header
- *  @autho : dongyiming
- *  @version : 1.0
- *  @data : 2017/8/14 9:39
+ * @version : 1.0
+ * @Description : header
+ * @autho : dongyiming
+ * @data : 2017/8/14 9:39
  */
-public class HeaderView  extends LinearLayout {
+public class HeaderView extends RelativeLayout {
 
     private static final int STATE_NORMAL = 0;
     private static final int STATE_RELEASE_TO_REFRESH = 1;

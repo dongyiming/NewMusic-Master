@@ -12,6 +12,7 @@ import com.example.nc_basic_ui.R;
 import com.example.nc_basic_ui.adapter.TuChongAdapter;
 import com.example.nc_basic_ui.controller.TcImageController;
 import com.example.nc_basic_ui.interaction.ITcImageView;
+import com.example.nc_basic_ui.view.TcItemDecoration;
 import com.example.nc_common_resource.view.RefreshRecyclerView;
 import com.example.nc_super_abs.fragment.BaseInnerFragment;
 import com.example.nc_super_abs.itemdecoration.CommonDecoration;
@@ -29,10 +30,6 @@ import java.util.List;
 public class FoundFragment extends BaseInnerFragment implements ITcImageView {
 
 
-    private FrameLayout flayout_loading;
-    private LinearLayout llayout_loading;
-    private ImageView img_progress;
-    private LinearLayout llayout_error;
     private RefreshRecyclerView recyclerview;
     private SwipeRefreshLayout swipeRefreshView;
     private TcImageController tcImageController;
@@ -53,10 +50,7 @@ public class FoundFragment extends BaseInnerFragment implements ITcImageView {
     public void registerWidgetEvent() {
 
         recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
-        DecorationInfo decorationInfo = new DecorationInfo();
-        decorationInfo.setVerticalDividerHeight(24).setColorResource(R.color.color_tc_splitlint_bg);
-        CommonDecoration commonDecoration = new CommonDecoration(getActivity(), decorationInfo, true);
-        recyclerview.addItemDecoration(commonDecoration);
+        recyclerview.addItemDecoration(new TcItemDecoration(getActivity()));
         recyclerview.setPullRefreshEnabled(false);
         recyclerview.setOnRefreshLoadListener(refreshLoadListener);
         swipeRefreshView.setRefreshing(false);

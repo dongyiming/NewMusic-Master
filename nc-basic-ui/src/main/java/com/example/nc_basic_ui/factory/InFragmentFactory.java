@@ -2,7 +2,7 @@ package com.example.nc_basic_ui.factory;
 
 import com.example.nc_basic_ui.fragment.inner.DailyNewsFragment;
 import com.example.nc_basic_ui.fragment.inner.EyepetorzerFragment;
-import com.example.nc_basic_ui.fragment.inner.MenuCollectionFragment;
+import com.example.nc_basic_ui.fragment.inner.MenusFragment;
 import com.example.nc_basic_ui.fragment.inner.RecommendMenuFragment;
 import com.example.nc_super_abs.fragment.BaseInnerFragment;
 
@@ -41,7 +41,7 @@ public class InFragmentFactory {
                     mFragmentFactory = new RecommendMenuFragment();
                     break;
                 case PAGE_TWO:
-                    mFragmentFactory = new MenuCollectionFragment();
+                    mFragmentFactory = new MenusFragment();
                     break;
                 case PAGE_THREE:
                     mFragmentFactory = new EyepetorzerFragment();
